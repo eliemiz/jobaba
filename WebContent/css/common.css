@@ -60,16 +60,11 @@ button {
 	background-color: transparent;
 }
 
-input[type=checkbox] {
+input[type=checkbox], input[type=radio] {
 	background-color: #ffffff;
 	border: 1px solid #dcdcdc;
 	width: 16px;
 	height: 16px;
-}
-
-input[type=radio] {
-	width: 1em;
-	height: 1em;
 }
 
 hr {
@@ -106,8 +101,10 @@ input[type=text], input[type=number], input[type=email], input[type=password]
 	background-color: #ffffff;
 }
 
+
 input[type=text]:focus, input[type=number]:focus, input[type=email]:focus,
-	input[type=password]:focus {
+	input[type=password]:focus, input[type=search], textarea:focus {
+	outline: none;
 	border: 1px solid #20b4ab;
 }
 
@@ -147,17 +144,11 @@ input:invalid, textarea:invalid {
 	background-color: #f0dddd;
 }
 
-input[type=search]::-webkit-search-decoration, input[type=search]::-webkit-search-cancel-button,
-	input[type=search]::-webkit-search-results-button, input[type=search]::-webkit-search-results-decoration
-	{
-	display: none;
-}
-
 button+button {
 	margin-left: 4px;
 }
 
-.btn {
+button {
 	display: inline-block;
 	text-align: center;
 	min-width: 100px;
@@ -178,7 +169,7 @@ button:hover, [type="button"]:hover, button:hover span {
 	font-weight: 600;
 }
 
-.btn.btn_small {
+.btn_small {
 	font-size: 14px;
 	padding: 2px 10px !important;
 	min-width: auto !important;
@@ -187,20 +178,20 @@ button:hover, [type="button"]:hover, button:hover span {
 	line-height: normal;
 }
 
-.btn.btn_mid {
+.btn_mid {
 	width: 140px;
 	font-size: 13px;
 	margin-left: 5px;
 }
 
-.btn.btn_big {
+.btn_big {
 	width: 290px;
 	height: 64px;
 	line-height: 64px;
 	font-size: 18px;
 }
 
-.btn.btn_cyan {
+.btn_cyan {
 	background-color: #38BAB2;
 	color: #ffffff;
 }
