@@ -5,6 +5,15 @@ html, body {
 	height: 100%;
 }
 
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code,
+	form, fieldset, legend, textarea, p, blockquote, th, td, input, select,
+	button, address, label, span {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: normal;
+}
+
 body, input, textarea, select {
 	font-family: 'NotoR', 'sans-serif';
 	font-size: 15px;
@@ -12,6 +21,7 @@ body, input, textarea, select {
 	color: #3c3c3c;
 	font-weight: inherit;
 	font-style: normal;
+	letter-spacing: -0.25;
 }
 
 body {

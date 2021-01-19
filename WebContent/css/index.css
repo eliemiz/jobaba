@@ -1,3 +1,173 @@
 @charset "UTF-8";
 
+.top_setting {
+	background-color: white;
+}
 
+.top_setting:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.top_setting_inner {
+	width: 1260px;
+	margin: 0 auto;
+	padding: 40px 0 14px;
+}
+
+.top_setting_inner:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.top_setting_left {
+	float: left;
+}
+
+.top_setting_left .menu {
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 36px;
+}
+
+.top_setting_left .menu .bar1, .top_setting_left .menu .bar2,
+	.top_setting_left .menu .bar3 {
+	width: 20px;
+	height: 2px;
+	background-color: black;
+	margin: 4px 0;
+	transition: 0.4s;
+}
+
+.top_setting_left .logo {
+	display: inline-block;
+}
+
+.top_setting_left .logo h1 {
+	display: inline-block;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 900;
+	font-size: 2.125rem;
+	cursor: pointer;
+}
+
+.top_setting_left .logo a {
+	color: #0E2C49;
+	padding-left: 40px;
+	background: url(../images/logo_img.png) no-repeat left center;
+}
+
+.top_setting_left .logo a:hover {
+	text-decoration: none;
+}
+
+.top_setting_left .logo h1 span {
+	font-weight: 900;
+}
+
+.top_setting_right {
+	float: right;
+	padding-top: 7px;
+}
+
+/* .top_setting_right ul {
+	
+} */
+.top_setting_right ul li {
+	float: left;
+}
+
+.top_setting_right ul li a:after {
+	content: 'ㆍ';
+	display: inline-block;
+	color: #999999;
+	font-weight: 600;
+	padding: 0 3px;
+}
+
+.top_setting_right ul li:last-child a:after {
+	display: none;
+}
+
+.top_setting_right ul li a {
+	font-size: 12px;
+	font-weight: 600;
+	color: #333333;
+	line-height: 30px;
+	height: 30px;
+	position: relative;
+	line-height: 30px;
+}
+
+.search_wrap {
+	position: relative;
+	padding: 16px 0;
+}
+
+.search_inner {
+	padding: 0 49px;
+	width: 1260px;
+	margin: auto;
+}
+
+.search_box {
+	position: relative;
+	width: 640px;
+	max-width: 100%;
+	height: 38px;
+}
+
+.search_input {
+	width: 100%;
+	height: 100%;
+	padding: 0 10px;
+	outline: 0;
+	border-radius: 5px;
+}
+
+.search_right {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+.search_btn {
+	width: 18px;
+	height: 100%;
+	text-indent: -9999px;
+	background: url(../images/search_icon_02.png) no-repeat center;
+	background-size: contain;
+	cursor: pointer;
+}
+
+.search_btn:focus {
+	outline: none;
+}
+
+.c_cyan {
+	color: #38BAB2;
+}
+
+.b_cyan {
+	background-color: #38BAB2;
+}
+
+@media screen and (max-width: 1300px) {
+	.top_setting_inner {
+		width: 100%;
+	}
+	.top_setting_left {
+		padding-left: 20px;
+	}
+	.top_setting_right {
+		padding-right: 20px;
+	}
+	.search_inner {
+		width: 100%;
+	}
+}
