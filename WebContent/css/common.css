@@ -207,3 +207,21 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.strong {
+	font-weight: bold;
+}
+
+.clearFix:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.c_cyan {
+	color: #38BAB2;
+}
+
+.b_cyan {
+	background-color: #38BAB2;
+}
