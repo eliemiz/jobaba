@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>사업신청</title>
+</head>
+<body>
+  <form><!-- id="listFrm" name="listFrm" -->
+	<div> <!-- class="wrap container-fluid" -->
+		<header>
+			<div><!-- class="header_wrap" -->
+				<!-- top_setting -->
+				<div><!-- class="top_setting -->
+					<div class="top_setting_inner"><!-- class top_setting_inner -->
+						<!-- top_setting left -->
+						<div class="top_setting_left"><!-- class="top_setting_left -->
+							<!-- hb_menu, logo 삽입할 것 -->
+						</div>
+						
+						<ul class="top_setting_right"><!-- class="top_setting_right" --><!-- 로그인, 회원가입 버튼 -->
+							<li>
+								<!-- 하이퍼링크 -->로그인
+							</li>
+							<li>
+								<!-- 하이퍼링크 -->회원가입
+							</li>
+						</ul>
+					</div>
+				</div>				
+				<!-- search -->
+				<div><!-- class="search_wrap" -->
+					<div><!-- class="inner" -->
+						<div><!-- class="search_box" 검색창-->
+							<input type="search" name="searchWord" placeholder="원하는 사업을 찾아보세요!"><!-- class="search_inp" -->
+							<div><!-- class="search_right" -->
+								<input type="submit" value="검색"><!-- class="btn_search" onclick="fn_goSearch(); return false;" --></input>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	
+		<main>
+			<div><!-- class="inner" -->
+				<div>
+					<!-- 사업정보 -->
+					<div class>
+						<section><!-- class="busiInfo small_info -->
+							<div><!-- box img_box -->
+								<!-- <img src="사업관련이미지" alt="사업이름"> -->
+							</div>
+							<div><!-- class="box info_box -->
+								<ul><!-- class="info" -->
+									<li><!-- class="title" -->
+									  <h4>"사업이름"</h4>
+									</li>
+									<li><!-- class="txt term title" -->
+									  "신청시작일/시간 ~ 신청마감일/시간"
+									  <span><!-- class="ing" -->
+									  	"D - 2"<!-- 마감까지 디데이 -->
+									  </span>
+									</li>
+								</ul>
+								<div><!-- class="bi_btn" 신청버튼 관련-->
+									<button type="button"><!-- class="btn icon_apply btn_navy btn_mid" onclick="goRecept(665);" -->
+									  <span>"신청"</span>
+									</button>
+								</div>
+							</div>
+							<div><!-- class="busuInfo_right @@" 주관기관 관련 -->
+								<!-- <img src="주관기관 소속시 이미지" alt="주관시" -->
+								<p><!-- class="c-blue" -->
+								  "@@도 @@시에서 준비한 정책과 제도입니다."
+								</p>
+							</div>
+						</section>
+					</div>
+				</div>
+				<div><!-- class="tabWrap sub_tabs" -->
+					<ul>
+						<li><!-- class="active" -->
+						  <a href="#"><!-- onclick="layerTabGoBsnsList();" -->
+						  	<h3>"사업정보"</h3>
+						  </a>
+						</li>
+						<li class>
+						  <a href="#"><!-- onclick="layerTabGoLatterList();" -->
+						  	<h3>"후기"</h3>
+						  </a>
+						</li>
+					</ul>
+				</div>
+				<section>
+					<pre style="white-space: pre-line; width:auto; text-align:center; overflow:visible; padding:20px 0">
+						<iframe id="iframe" src="" style="width:100%; height:100%">
+							#document
+							<!-- 상세내용 html 작업 -->
+						</iframe>
+					</pre>
+				</section>
+				<!-- 다른사업 -->
+				<h4><!-- class="border_tit" -->
+					<p>
+						<span><!-- class="c-blue" -->
+							"@@도 @@시"
+						</span>
+						"의 또 다른 사업!"
+					</p>
+				</h4>
+				<div><!-- class="listWrap -->
+					<ul><!-- class="big" 진행중-->
+						<ul><!-- class="big" -->
+							<li>
+								<ul><!-- class="small" -->
+									<li><!-- class="img" -->
+										<a href="#"><!-- onclick="goDetail(663); return false;" -->
+											<img src="해당 진행 사업의 이미지" alt="해당 진행사업이름">
+											<span><!-- class="ing" -->
+												"진행중"
+											</span>
+										</a>
+									</li>
+									<li><!-- class="title" onclick="goDetail(663); return false;" -->
+										"[@@시]해당 진행사업명"
+									</li>
+									<li><!-- class="txt" -->
+										"시작연월일 ~ 종료 연월일"
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</ul>
+				</div>
+			</div>
+		</main>
+		
+	</div>
+  </form>
+</body>
+</html>
