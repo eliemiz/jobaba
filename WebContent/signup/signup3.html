@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입-가입정보</title>
+<style>
+.c_red-f_13{
+color: red;
+font-size: 13px;
+}
+</style>
+</head>
+<body>
+	<div>
+	<h2 align="center">회원가입</h2>
+	<div>
+	<h3>가입정보</h3>
+	</div>
+	<form>
+	<fieldset>
+	
+	<div>
+	<input type="text"  name="nm" tabindex="1" value="" maxlength="20" >
+	</div>
+	<div> 
+	<input type="text" name="usrId" tabindex="2" value="" placeholder="아이디(이메일 주소형식)를 입력하세요.">
+	<button type="button" name="button" >중복확인</button>
+	</div>
+	<p class="c_red-f_13">* 아이디는 이메일 주소 형식으로 입력하셔야 합니다.</p>
+	<div>
+	<input type="password" name="pswd" tabindex="3" placeholder="비밀번호를 입력하세요." maxlength="20" autocomplete="off">
+	</div>
+	<p class="c_red-f_13">* 비밀번호는 영문자,숫자,특수문자 각각 1개 이상 포함하며,8자이상 20자이내여야 합니다.</p>
+	<div>
+	<input type="password" name="pswd2" tabindex="4" placeholder="위에서 입력한 비밀번호와 동일하게 입력하세요." maxlength="20" autocomplete="off">
+	</div>
+	<div>
+	<input type="text"name="usrEmail" tabindex="5" value="" placeholder="비밀번호 분실시 임시비밀번호를 받을 이메일 주소를 입력하세요.">
+	</div>
+	<div>
+	<input type="text" name="telno3"  tabindex="7" value="" maxlength="13" placeholder="휴대폰 번호를 입력하세요.">
+	</div>
+	<div>
+	<input type="text" name="agstBrtd" maxlength="20" value="" >
+	</div>
+	<div>
+	<button type="button"><span>가입하기</span></button>
+	<button type="button"><span>취소</span></button>
+	</div>
+	
+	
+	
+	
+	</fieldset>
+	</form>
+	
+	
+	</div>
+</body>
+</html>
