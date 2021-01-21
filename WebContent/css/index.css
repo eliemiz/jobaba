@@ -263,6 +263,69 @@ footer {
 	color: #777777;
 }
 
+.privacy {
+	padding: 20px;
+	margin-top: 40px;
+}
+
+.privacy_title {
+	margin-bottom: 15px;
+}
+
+.privacy_title h3 {
+	font-size: 28px !important;
+	font-weight: 600;
+}
+
+.privacy_title h3:after {
+	content: '';
+	display: block;
+	background: #eeeeee;
+	height: 1px;
+	width: 100%;
+	margin-top: 15px;
+}
+
+.privacy_content {
+	margin: 0 0 30px;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: normal;
+}
+
+.privacy_content h2.title {
+	margin-top: 50px;
+}
+
+.privacy_content h3.title {
+	font-size: 20px !important;
+	margin: 35px 0 5px;
+	position: relative;
+}
+
+.privacy_content h3.title:before {
+	content: '';
+	display: block;
+	height: 2px;
+	width: 30px;
+	background: #333333;
+	position: absolute;
+	top: -10px;
+	left: 0;
+}
+
+.privacy_content p {
+	font-size: 14px;
+	color: #333333;
+	line-height: 1.8;
+}
+
+.privacy_content p .link {
+	color: #007bff;
+	text-decoration: underline;
+	display: inline-block;
+}
+
 @media screen and (max-width: 1300px) {
 	.top_setting_inner {
 		width: 100%;
