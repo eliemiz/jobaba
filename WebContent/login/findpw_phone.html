@@ -7,36 +7,29 @@
 <link rel="stylesheet" href="/jobaba/css/common.css">
 </head>
 <body>
+<br><br>
 <h2 align="center">비밀번호 찾기</h2>
-<table align="center" width="500" height="50" border>
-<td>[알림] 비밀번호 재설정 안내</tr>
-<td>비밀번호 찾기를 하시면 입력하신 이메일이나 휴대폰의 카카오톡으로 인증번호를 발송해드립니다.<br>
-	해당 인증번호를 입력하신 후 비밀번호를 재설정해주세요.</td>
-</table>
+<br><br>
+<table align="center" width="400" height="90" border>
+<td>&nbsp;&nbsp;[알림] 비밀번호 재설정 안내</tr>
+<td>&nbsp;&nbsp;비밀번호 찾기를 하신 후 비밀번호를 재설정해주세요.</td>
+</table><br>
 <form align="center">
 <a href="findpw_mail.html"><input type="radio" name="find" value="1" >
 		이메일로 찾기</a>
 <a href="findpw_phone.html"><input type="radio" name="find" value="2">
-		휴대폰으로 찾기</a><br>
-<p style="color:red;">* 회원정보에 등록한 아이디, 이름, 휴대폰 번호를 입력해 주세요.<br>
-(동일한 정보를 입력해 주셔야 인증번호를 받을 수 있습니다.)</p>
-<input type="text" name="id" size="40" placeholder="아이디(이메일 주소 형식으로 입력)" align="center"><br>
-<input type="text" name="name" size="40" placeholder="이름" align="center"><br>
-<input type="text" name="phone" size="40" placeholder="휴대폰 번호(-없이 입력)" align="center">
-<input type="submit" value="인증번호 받기"><br>
-<input type="text" name="number" size="40" placeholder="인증번호(5자리 숫자)" align="center"><br>
+		휴대폰으로 찾기</a><br><br>
+<p style="color:red; font-size:8px;">* 회원정보에 등록한 아이디, 이름, 휴대폰 번호를 입력해 주세요.</p>
+<input type="text" name="id" size="46" placeholder="아이디(이메일 주소 형식으로 입력)" align="center"><br>
+<input type="text" name="name" size="46" placeholder="이름" align="center"><br>
+<input type="text" name="phone" size="46" placeholder="휴대폰 번호(-없이 입력)" align="center">
 <br>
-<li>인증번호 발송 중복 방지를 위하여 '인증번호받기'는 2분에 1회로 제한됩니다.<br>
- 회원가입시 등록한 휴대폰의 카카오톡이나 문자(카카오톡 '잡아바' 채널 차단시)를 확인해주세요.</li>
-<li>네트워크 환경에 따라 인증번호 수신이 최대 1분정도 지연될 수 있습니다.</li>
-<li>인증번호가 오지 않을 경우 휴대폰 번호를 재확인해 주세요.</li>
-<li>스팸으로 설정되어 있지 않은지 확인해 주세요.</li>
 <br>
-<div style="background-color: #38bab2; height:40px; width:350px; text-align:center;" >
+<div style="background-color: #38bab2; height:40px; width:150px; text-align:center; margin:auto;" >
 <button type="submit">다음</button>
-</div> 
+</div> <br>
 <div style="text-align:center;">
-<a href="regist.html">회원가입</a> |
+<a href="/jobaba/signup/signup.html">회원가입</a> |
 <a href="findid.html">아이디 찾기</a> 
 </div>
 </form>
