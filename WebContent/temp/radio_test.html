@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/jobaba/css/fonts.css">
+<link rel="stylesheet" href="/jobaba/css/common.css">
+<style type="text/css">
+body {
+	text-align: center;
+	margin-top: 50px;
+}
+
+form {
+	visibility: hidden;
+	width: 0px;
+	display: inline-block;
+}
+</style>
+</head>
+<body>
+	<div>
+		<input type="radio" name="tempName" id="one" onchange="changeForm('one')"><label for="one">first</label>
+		<input type="radio" name="tempName" id="two" onchange="changeForm('two')"><label for="two">second</label>
+	</div>
+		
+	<form id="form1">
+		<table>
+			<tr><td>ID</td><td><input type="text" name="userid"></td></tr>
+			<tr><td>PASS</td><td><input type="password" name="pass" ></td></tr>
+			<tr><td colspan="2"><button type="submit" class="btn_mid btn_cyan">text</button></td></tr>
+		</table>
+	</form>
+	
+	<form id="form2">
+		<table>
+			<tr><td>EMAIL</td><td><input type="email" name="email"></td></tr>
+			<tr><td>PHONE</td><td><input type="text" name="phone" ></td></tr>
+			<tr><td colspan="2"><button type="submit" class="btn_mid btn_cyan">text</button></td></tr>
+		</table>
+	</form>
+</body>
+<script type="text/javascript">
+
+	function changeForm(element) {
+		if (element == 'one') {
+			document.querySelector('#form1').style.visibility = 'visible';
+			document.querySelector('#form1').style.width = 'auto';
+			
+			document.querySelector('#form2').style.visibility = 'hidden';
+			document.querySelector('#form2').style.width = '0px';
+			
+		} else if (element == 'two') {
+			document.querySelector('#form1').style.visibility = 'hidden';
+			document.querySelector('#form1').style.width = '0px';
+			
+			document.querySelector('#form2').style.visibility = 'visible';
+			document.querySelector('#form2').style.width = 'auto';
+		}
+	}
+</script>
+</html>
