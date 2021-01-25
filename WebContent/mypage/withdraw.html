@@ -1,9 +1,9 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <title>일자리지원사업 통합접수시스템</title>
 <link rel="stylesheet" href="/jobaba/css/font.css">
 <link rel="stylesheet" href="/jobaba/css/common.css">
-<meta charset="UTF-8">
 <style>
      * {margin: 0; padding:0;}
      
@@ -11,20 +11,33 @@
          margin:0 auto;
          width: 960px;
      }
+     button {
+		display: inline-block;
+		text-align: center;
+		min-width: 100px;
+		height: 40px;
+		line-height: 40px;
+		letter-spacing: 1px;
+		padding: 0 !important;
+		font-size: 14px;
+		border-radius: 5px;
+		font-weight: 600;
+		cursor: pointer;
+		background-color: transparent;
+   }
+	.btn_cyan {
+		background-color: #38BAB2;
+	
 </style>
 </head>
 <body>
-<header>
-    <div style="background-color: #38bab2; height:40px;">
-		<input type="search" style="vertical-align: center; margin:5px;">
-	</div>
-</header>
+
 <!-- Start of 회원탈퇴 시 주의사항 -->
 <tr>
   <td>
      <table border="0" >
 	   <tr>
-	      <td width="80" style="text-align: center;"><strong><h2>탈퇴안내</h2></strong></td>
+	      <td width="80" style="text-align: center;"><strong><h1>탈퇴안내</h1></strong></td>
   <td>&nbsp;</td>
 </tr>
 <!-- 가로 선 -->
@@ -37,8 +50,7 @@
 	<td colspan="2">회원탈퇴 신청에 앞서 아래의 사항을 <font class="highlight">반드시 확인
 </font>하시기 바랍니다.</td>
 </tr>
-</table><br />
-
+     </table>
 <section>
 	<table class="type_1" cellpadding="10">
 	<tr>
@@ -62,16 +74,18 @@
 				<hr>
 				<p><li><input type="checkbox" value="6"><h3>기타 해당 웹사이트의 정책, 약관 등에서 정하고 있는 정보 삭제</h3></li></p>			
 			    <hr>
-			    <p style="color:red; font-size:18px">탈퇴 후에는 아이디 로 다시 가입할 수 없으며 아이디와 데이터는 복수할 수 없습니다.</p><br>	
-			    <p><input type="checkbox" value="6"><h3>안내 사항을 모두 확인하였으며, 이에 동의합니다.</h3></p>
+			    <p style="color:red; font-size:18px">탈퇴 후에는 아이디로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다.</p><br>	
+			    <p style = "align:ceneter;" ><input type="checkbox" value="6">
+			    <h3>안내 사항을 모두 확인하였으며, 이에 동의합니다.</h3></p><br><br>
+			    
+			    <div style="height:40px; text-align:center;">
+                 <button type="button"  class="btn btn_mid btn_cyan" >확인</button>
+                </div><br>
 			</ol>
-		</div>
-	   </td>
-	</tr> 
-	</table><p />
+		  </div>
+	    </td>
+	  </tr> 
+	</table>
 </section>  
-<footer>
-       <button type="button" align="ceneter" class="btn btn_mid btn_cyan" >확인</button>
-</footer>
 </body>
 </html>
