@@ -3,206 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <title>사업신청</title>
-<link rel="stylesheet" href="../css/font/notokr-regular.woff">
-<link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="../css/fonts.css">
-<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="/jobaba/css/common.css">
+<link rel="stylesheet" href="/jobaba/css/fonts.css">
+<link rel="stylesheet" href="/jobaba/css/index.css">
+<link rel="stylesheet" href="/jobaba/supportBusiness/css_sb/supportCss.css">
+<link rel="stylesheet" href="/jobaba/supportBusiness/css_sb/style.css">
+<style type="text/css">
+.inner{width: 1260px;margin: auto}
+.busiInfo .info_box{overflow: auto;position: relative;overflow-y: hidden;padding: 20px;}
+</style>
 </head>
 <body>
 <form id="listFrm" name="listFrm">
-	<div class="wrap container-fluid">
-		<script type="text/javascript">
-
-		$(document).ready(function(){
-	 		$(".left_logo").on('click', function(){
-				location.href="https://www.jobaba.net/main/main.do";
-			});
-	 		
-	 		$(".center_logo").on('click', function(){
-	 			location.href = contextPath + "/bsns/bsnsListView.do";
-	 		});
-	 		
-
-
-
-
-			$('#_loginBtn').on('click', function(){
-				location.href="/mber/login/login.do";
-			});
-
-			var refreshToken = "";
-			var cookies = document.cookie.split(";");
-			console.log(cookies);
-			for(var i in cookies) {
-				if(cookies[i].search("refresh_token") != -1) {
-					console.log(cookies[i]);
-					refreshToken = cookies[i].replace("refresh_token=","");
-					refreshToken = refreshToken.replace("\"","");
-					refreshToken = refreshToken.replace("=","");
-					refreshToken = refreshToken.replace(" ","");
-					refreshToken = refreshToken.replace("\"","");
-					console.log(refreshToken);
-					//alert(refreshToken);
-				}
-			}
-			$("#header_gjf_link").attr("href","https://www.gjf.or.kr/gjf/index.do?refresh_token="+refreshToken);
-
-		});
-		
-		function fn_goSearch() {
-			if($('input[name=searchWord]').val() == '') {
-				$.alert("검색어를 입력하여 주세요.");
-				return false;
-			}
-			location.href=contextPath + "/bsns/bsnsSearchView.do?searchWord="+ encodeURI(encodeURIComponent($('input[name=searchWord]').val()));
-		}		
-
-
-		</script>
-		<!-- header -->
-		<header>
-			<div class="header_wrap">
-				<!-- top_setting -->
-				<div class="top_setting">
-					<div class="top_setting_inner">
-						<!-- top_setting_left -->
-						<div class="top_setting_left">
-							<div class="hb_menu">
-								<div class="bar1"></div>
-								<div class="bar2"></div>
-								<div class="bar3"></div>
+	<main>
+		<div class="inner">
+			<div>
+				<!-- 사업정보 -->
+				<div class>
+					<section class="busiInfo small_into">
+						<div class="box img_box">
+							<img src="/jobaba/supportBusiness/img/사업소개.png" width="100" height="100" alt="사업관련이미지">
+						</div>
+						<div class="box info_box">
+							<ul class="info">
+								<li class="title">[@@시] 청년 abc지원사업</li>
+								<li class="txt term_title">2021-01-21 09:00 ~ 2021-01-29 18:00</li>
+							</ul>
+							<div class="bi_btn">
+								<button type="submit" class="btn icon_apply btn_navy btn_mid">신청</button>
+								<input type="button" class="btn icon_apply btn_b_cyan btn_mid" value="첨부파일">
 							</div>
-							<h1 class="logo">
-							  <a href="메인화면소스" title="메인화면 이동">통합<span class="c_cyan">접수</span>시스템</a>
-							</h1>
 						</div>
-						<!-- top_setting_right -->
-						<ul class="top_setting_right">
-							<li><a href="../login/login.html" class="login">로그인</a>     <a href="../signup/signup.html" class="membership">회원가입</a></li>
-						</ul>
-					</div>
-				</div>
-				<br>
-				<!-- search -->
-				<div class="search_wrap">
-					<div class="inner">
-						<div class="search_box">
-							<img src="../images/search_icon_02.png" width="20px" height="20px">
-							<input type="search" class="search_inp" name="searchWord" placeholder="원하는 사업을 찾아보세요!">
-							<input type="submit" class="btn_search" value="검색" onclick="fn_goSearch(); return false;">
+						<div class="busuInfo_right">
+							<img src="/jobaba/supportBusiness/img/시로고.png" alt="@@시 로고">
+							<p class="c-blue">"@@시에서 준비한 정책과 제도입니다."</p>
 						</div>
-					</div>
+					</section>
 				</div>
 			</div>
-		</header>
-		<main>
-			<div class="inner">
-				<script type="text/javascript">
-
-					var param = "&bsnsSeq=665&sDate=&eDate=&tpCd1=&statusCd=&cateCd=&pageNo=";
-
-					$(document).ready(function(){
-						/* 탭 active 표현 */
-						$('div.tabWrap>ul>li').on('click',function(){
-							$('div.tabWrap>ul>li').removeClass('active');
-							$(this).addClass('active');
-						});
-					});
-
-
-				 	function layerTabGoBsnsList() {
-						location.href="businessInfo.html" 
-						/*document.frm.action="/bsns/bsnsDetailView.do?bsnsSeq=665";
-						document.frm.method="post";
-						document.frm.submit();*/
-					}
-
-					function layerTabGoQnaList() {
-						location.href="/qna/qnaListView.do?tab=qna";
-						/*document.frm.action="/qna/qnaListView.do?bsnsSeq=665";
-						document.frm.method="post";
-						document.frm.submit();*/
-					}
-
-					function layerTabGoPollList() {
-						location.href="/survey/surveyDetailView.do?tab=survey" + param;
-						/*document.frm.action="/survey/surveyDetailView.do?bsnsSeq=665";
-						document.frm.method="post";
-						document.frm.submit();*/
-					}
-
-					function layerTabGoFaqList(){
-						location.href="/faq/getFAQListView.do?tab=faq" + param;
-					}
-	
-					function layerTabGoEtcOne(){
-						location.href="/etc/getEtcOneView.do?tab=etc" + param;
-					}
-	
-					function layerTabGoLatterList(){
-						location.href="/latter/latterListView.do?tab=latter" + param;
-					}
-	
-				</script>
-				<input type="hidden" name="sDate" id="sDate" value="">
-				<input type="hidden" name="eDate" id="eDate" value="">
-				<input type="hidden" name="tpCd1" id="tpCd1" value="">
-				<input type="hidden" name="statusCd" id="statusCd" value="">
-				<input type="hidden" name="bsnsTitle" id="bsnsTitle" value="">
-				<input type="hidden" name="cateCd" id="cateCd" value="">
-				<div>
-					<div class>
-						<section class="busiIngo small_info">
-							<div class="box img_box">
-								<img src="사업소개이미지소스" width="100" height="100" alt="사업관련이미지">
-							</div>
-							<div class="box info_box">	
-								<ul class="info">
-									<li class="title"><h4>[@@시] 청년 abc지원사업</h4></li>
-									<li class="txt term title">2021-01-21 09:00 ~ 2021-01-29 18:00<span>("D-2")</span></li>
-								</ul>
-								<div class="bi_btn">
-									<button type="button" class="btn icon_apply btn_navy btn_mid" onclick="goRecept(665);"><span>신청</span></button>
-								</div>
-							</div>
-							<div class="busuInfo_right paju"><!-- paju=>@@ -->
-								<img src="@@시 이미지" alt="@@시 로고">
-								<p class="c-blue">"@@시에서 준비한 정책과 제도입니다."</p>
-							</div>
-						</section>
-					</div>
-				</div>
-				<div class="tabWrap sub_tabs">
-					<ul>
-						<li class="active"><a href="businessInfo.html" target="iframe"><h3>사업정보</h3></a></li>
-						<li class=""><a href="afterApply.html" target="iframe"><h3>후기</h3></a></li>
-					</ul>
-				</div>
-				<section>
-					<pre style="white-space: pre-line;width:auto;text-align: center; overflow:visible;padding:20px 0">
-						<iframe name="iframe" src="businessInfo.html" style="width :90%; height: 200px;">
-						</iframe>
-					</pre>
-				</section>
-				<!-- 다른 사업 추천 -->
-				<h4 class="border_tit"><p><span class="c-blue">@@시</span>의 또 다른 사업!</p></h4>
-				<div class="listWrap">
+			<div class="tabWrap sub_tabs">
+				<ul>
+					<li class="active"><a href="businessInfo.html" target="iframe"><h3>사업정보</h3></a></li>
+					<li><a href="afterApply.html" target="iframe"><h3>후기</h3></a></li>
+				</ul>
+			</div>
+			<section>
+				<pre style="white-space: pre-line; width:auto; text-align: center; overflow:visible;padding:20px 0">
+					<iframe name="iframe" src="businessInfo.html" style="width :100%; height: 1000px;">
+					</iframe>
+				</pre>
+			</section>
+			<!-- 다른 사업 추천 -->
+			<h4 class="border_tit"><p><span class="c-blue">@@시</span>의 또 다른 사업!</p></h4>
+			<div class="listWrap">
+				<ul class="big">
 					<ul class="big">
-						<ul class="big">
-							<li>
-								<ul class="small">
-									<li class="img"><a href="#"><img src="../images/logo_img.png" alt="@@시 **사업" width="50" height="50"><span>진행중</span></a></li>
-									<li class="title">[@@시]**사업</li>
-									<li class="txt">2021-01-18 ~ 2021-01-28</li>
-								</ul>
-							</li>
-						</ul>
+						<li>
+							<ul class="small">
+								<li class="img"><a href="#"><img src="/jobaba/supportBusiness/img/사업소개2.png" alt="@@시 **사업" width="50" height="50"><span>진행중</span></a></li>
+								<li class="title">[@@시]면접복 무료 대여</li>
+								<li class="txt">2021-01-18 ~ 2021-01-28</li>
+							</ul>
+						</li>
 					</ul>
-				</div>
+				</ul>
 			</div>
-		</main>
-	</div>
+		</div>
+	</main>
 </form>
-
 </body>
 </html>
