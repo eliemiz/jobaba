@@ -4,223 +4,338 @@
 <meta charset="UTF-8">
 <style>	
 .container {
-  display: grid;
-  grid-template-rows: 330px 330px; 
-  grid-template-columns: 330px 330px 330px 330px;
-  
+	 display: grid;
+	 grid-template-rows: repeat(2, 330px); 
+	 grid-template-columns: repeat(4, 330px);
 }
+#divPosition {  
+     position:absolute;
+     height:200px;
+     width:200px;
+     margin:-325px 0px 0px -230px;
+     top: 80%;
+     left: 27%;
+     padding: 5px;
+   }
+#div2{ visibility: hidden }
+#div3{ visibility: hidden }
 .item {
-  
 }
 </style>
 <title>Main</title>
+<link rel="stylesheet" href="/jobaba/css/fonts.css">
+<link rel="stylesheet" href="/jobaba/css/common.css">
 <script>
-	// select 선택시 이미지 호출 
-    function test(no){ 
-        for(var i=1; i<=3; i++){
-            if(no==i){
-                document.getElementById('div'+i).style.display='block';
-          		document.getElementById('div'+i).style.display='grid';
-            }
-            else{
-                document.getElementById('div'+i).style.display='none';
-            }
+//select 선택시 이미지 호출 
+function test(no){ 
+    for(var i=1; i<=3; i++){
+        if(no==i){      
+      		document.getElementById('div'+i).style.display='grid'; 
+      		document.getElementById('div'+i).style.visibility='visible';
+        }
+        else{
+            document.getElementById('div'+i).style.display='none';
         }
     }
+}
 </script>
 </head>
+
 <body>
-<h2>지원사업</h2>
-<select name="select" onchange='test(this.value)'>
-	<option value="1" selected>진행중</option>
-	<option value="2">종료</option>
-	<option value="3">전체</option>
-</select>
-<div id='div1' class="container">
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
+<div align="center">
+	<a href="/jobaba/login/login.html"><img src ="img/배너_로그인전.png"></a>
 </div>
-<div id='div2' class="container">
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다
-		</p>
+<div id= 'divPosition'>
+	<h2 style="font-weight:100">지원사업</h2>
+	<select name="select" onchange='test(this.value)'>
+		<option value="1" selected>진행중</option>
+		<option value="2">종료</option>
+		<option value="3">전체</option>
+	</select>
+	<div id='div1' class="container">
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행1.png">	
+					<p style="font-weight:800">
+					[양평군]청년 꿈Dream 면접정장 대여 서<br>비스
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-12~2021-12-30
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행2.png">
+					<p style="font-weight:800">
+					[남양주시]'청년 꿈날개 옷장' 면접정장대<br>여 서비스
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-07~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행3.png">
+				<p style="font-weight:800">
+					[광주시]2021년 면접정장 대여&증명사진<br>
+					촬영지원 '청년 꿈이룸 프로젝트'
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-01~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행4.png">
+				<p style="font-weight:800">
+					[포천시]청년 면접정장 무료대여'포천청년<br>
+					키움옷장'
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-15~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행5.png">
+				<p style="font-weight:800">
+					[고양시]청년캣취업 사관학교(1기)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-22~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행6.png">
+				<p style="font-weight:800">
+					[하남시]청년 면접정장 무료대여
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-02~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행7.png">
+				<p style="font-weight:800">
+					[과천시]청년옷장(면접정장 대여비 지원)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-25~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행8.png">
+				<p style="font-weight:800">
+					[평택시]청년 면접정장 무료대여 서비스
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-15~2021-12-31
+					</p>
+		</div>
 	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
+	<div id='div2' class="container">
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/종료1.png">
+				<p style="font-weight:800">
+					[오산시]2021년 대학생 방학 일자리사업<br>
+					(2기)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-04~2021-01-08
+					</p>	
+			</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/종료2.png">
+				<p style="font-weight:800">
+					[오산시]2021년 청년 인턴일자리 사업<br>
+					(1단계)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2020-12-07~2020-12-11
+					</p>	
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/종료3.png">
+				<p style="font-weight:800">
+					[경기도]직업상담사 교육훈련-직업상담사의<br>
+					날
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-12-11~2021-12-15
+					</p>	
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/종료4.png">
+				<p style="font-weight:800">
+					[수원시]2020 수원시 온라인 채용박람회<br>
+					(3차)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2020-12-04~2020-12-07
+					</p>	
+		</div>
 	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
+	<div id='div3' class="container">
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행1.png">	
+					<p style="font-weight:800">
+					[양평군]청년 꿈Dream 면접정장 대여 서<br>비스
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-12~2021-12-30
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행2.png">
+					<p style="font-weight:800">
+					[남양주시]'청년 꿈날개 옷장' 면접정장대<br>여 서비스
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-07~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행3.png">
+					<p style="font-weight:800">
+						[광주시]2021년 면접정장 대여&증명사진<br>
+						촬영지원 '청년 꿈이룸 프로젝트'
+						</p>
+					</a>
+						<p style="font-size:0.9em; color:gray">
+						2021-01-01~2021-12-31
+						</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행4.png">
+				<p style="font-weight:800">
+					[포천시]청년 면접정장 무료대여'포천청년<br>
+					키움옷장'
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-15~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행5.png">
+				<p style="font-weight:800">
+					[고양시]청년캣취업 사관학교(1기)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-22~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행6.png">
+				<p style="font-weight:800">
+					[하남시]청년 면접정장 무료대여
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-02~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행7.png">
+				<p style="font-weight:800">
+					[과천시]청년옷장(면접정장 대여비 지원)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-25~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/진행8.png">
+				<p style="font-weight:800">
+					[평택시]청년 면접정장 무료대여 서비스
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-15~2021-12-31
+					</p>
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/종료1.png">
+				<p style="font-weight:800">
+					[오산시]2021년 대학생 방학 일자리사업<br>
+					(2기)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-01-04~2021-01-08
+					</p>	
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/종료2.png">
+				<p style="font-weight:800">
+					[오산시]2021년 청년 인턴일자리 사업<br>
+					(1단계)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2020-12-07~2020-12-11
+					</p>	
+		</div>	
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/종료3.png">
+				<p style="font-weight:800">
+					[경기도]직업상담사 교육훈련-직업상담사의<br>
+					날
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2021-12-11~2021-12-15
+					</p>	
+		</div>
+		<div class="item">
+			<a href="/jobaba/supportBusiness/supportBusiness.html">
+				<img src="img/종료4.png">
+				<p style="font-weight:800">
+					[수원시]2020 수원시 온라인 채용박람회<br>
+					(3차)
+					</p>
+				</a>
+					<p style="font-size:0.9em; color:gray">
+					2020-12-04~2020-12-07
+					</p>	
+		</div>
 	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-</div>
-<div id='div3' class="container">
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/진행1.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>
-	<div class="item">
-		<img src="../media/종료11.png">
-		<p ailgn="center">설명 안녕하세요하하하하하
-		반갑습니다 
-		</p>
-	</div>	
 </div>
 </body>
+<script>
+</script>
 </html>
