@@ -43,7 +43,7 @@
 			</div>
 			<div class="tabWrap sub_tabs">
 				<ul>
-					<li class="active"><a href="businessInfo.html" target="iframe"><h3>사업정보</h3></a></li>
+					<li id="temp2" class="active"><a href="businessInfo.html" target="iframe" onclick="test2()"><h3>사업정보</h3></a></li>
 					<li id="temp"><a href="afterApply.html" target="iframe" onclick="test()"><h3>후기</h3></a></li>
 				</ul>
 			</div>
@@ -75,6 +75,11 @@
 <script type="text/javascript">
 	function test(){
 		document.querySelector("#temp").setAttribute('class','active');
+		document.querySelector("#temp2").setAttribute('class',' ');
+	}
+	function test2(){
+		document.querySelector("#temp2").setAttribute('class','active');
+		document.querySelector("#temp").setAttribute('class',' ');
 	}
 </script>
 </html>
