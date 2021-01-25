@@ -7,13 +7,13 @@
 
 <style>
      * {margin: 0; padding:0;}
-     
+
      body {
          margin:0 auto;
          width: 1000px;
          background-color:#EBEBEB;
      }
-     .nav { width: 15%; height: 10%; float: left; }
+     
      h3 {
         color:  #38bab2;
      }
@@ -21,7 +21,7 @@
         display: inline-block;
 	    text-align: center;
         width: 100px;
-        height: 30px;
+        height: 40px;
         color: #ffffff;
         background-color: gray;
         padding: 0 !important;
@@ -31,7 +31,7 @@
 		cursor: pointer;
      }
      table {
-       
+        border-collapse:collapse;
         background-color: white;
         padding:20px;
      }
@@ -39,30 +39,32 @@
 </head>
 <body>
 	<strong><h1 align="center">마이페이지</h1></strong>
-	    <table align="center" width="1000" height="1000" border >
+	    <table align="center" width="1000" height="800" border >
 			<tr><td><h2>회원정보</h2><span><h3>인증완료</h3></span></td></tr><br><br>
 			<tr><td><strong>아이디</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="id" size="40" align="center"></td></tr><br>
+			  <input type="text" name="id" size="40" align="center"></td></tr><br>
 			<tr><td><strong>이름</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="pass" size="40" align="center">
+			  <input type="text" name="pass" size="40" align="center">
 			<span> <p style= color:red;>
 			※ 실명정보등 인적사항 수정을 원하시는 경우 본인인증을 다시 해주시기 바랍니다.</span>
 		    <div id="button"><button type="submit">본인인증</button></td></tr></div>
 			<tr><td><strong>휴대폰번호</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="phone" size="40" align="center">
-			<div id="button"><button type="submit">변경</button></td></tr></div></td></tr><br>
+			  <input type="text" name="phone" size="40" align="center">
+			<div id="button"><button type="submit">변경</button></div></td></tr><br>
 			<tr><td><strong>비밀번호</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<div id="button"><button type="submit">변경</button></td></tr></div></td></tr><br>
+			<div id="button"><button type="submit">변경</button></div></td></tr><br>
 			<tr><td><strong>비밀번호 찾기용 이메일</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="emailtofind" size="40"  align="center"></td></tr><br>
+			  <input type="text" name="emailtofind" size="40"  align="center"></td></tr><br>
 			<tr><td><strong>생년월일</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="birthday" size="40"  align="center"></td></tr><br>
+			  <input type="text" name="birthday" size="40"  align="center"></td></tr><br>
 			<tr><td><strong>성별</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="gender" size="40"  align="center"></td><br>
+			  <input type="text" name="gender" size="40"  align="center"></td><br>
 			<tr><td><strong>주소</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="address" size="20"  placeholder="우편번호"  align="center">
+			  <input type="text" name="address" size="20"  placeholder="우편번호"  align="center">
 			<div id="button"><button type="submit">주소검색</button></div><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="text" name="address" size="60"  placeholder="주소검색을 통해 입력됩니다."  align="center"><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="text" name="address" size="60"  placeholder="상제주소를 입력하세요"  align="center"></td></tr><br>
 
 			<tr><td><strong>알림서비스 제공 동의</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -75,18 +77,20 @@
 			</td>
 			<tr><td>
 			&nbsp;&nbsp;<span style="height:40px; text-align:center;" >
-		   <button type="submit" style="width:100px;">저장</button>   
-		   </span>&nbsp;&nbsp;
-	      <span style="height:40px; text-align:center;" >
-		   <button type="submit" style="width:100px;">취소</button>
-		   </span>
-			</td>
-			<tr><td>
-			<div style="height:40px;" >
-		   <button type="submit" style="width:150px;" class="btn btn_mid btn_cyan">관심정보설정</button>
-		   </div>
+		      <button type="submit" style="width:100px;">저장</button>   
+		    </span>&nbsp;&nbsp;
+	        <span style="height:40px; text-align:center;" >
+		      <button type="submit" style="width:100px;">취소</button>
+		    </span>
+		    </td>
+		    <tr><td>
+		    <div style="height:40px;" >
+		      <button type="submit" style="width:150px;" class="btn btn_mid btn_cyan">관심정보설정</button>
+		    </div>
 		   </td>
 	   </table>
-	   <li><ins><a href="withdraw.html">회원탈퇴페이지 바로가기</a ></ins></li>
+       <br>	 
+	   <li>일자리지원사업 통합접수시스템을 더이상 이용하지 않는다면&nbsp;&nbsp;
+	   <ins><a href="withdraw.html">회원탈퇴페이지 바로가기</a></ins></li>
 </body>
-</html>
+</html> 
