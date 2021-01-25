@@ -5,25 +5,57 @@
 <link rel="stylesheet" href="/jobaba/css/fonts.css">
 <link rel="stylesheet" href="/jobaba/css/common.css">
 <style>
-     * {margin: 0; padding:0;}
-     
+      * {margin: 0; padding:0;}
+
      body {
          margin:0 auto;
-         width: 960px;
+         width: 1000px;
+         background-color:#EBEBEB;
      }
-     .nav { width: 15%; height: 10%; float: left; background: lightgray; }
+     .nav { width: 15%; height: 10%; float: left; }
+     form {
+         background-color:white;
+     }
+     button {
+		display: inline-block;
+		text-align: center;
+		min-width: 100px;
+		height: 40px;
+		line-height: 40px;
+		letter-spacing: 1px;
+		padding: 0 !important;
+		font-size: 14px;
+		border-radius: 5px;
+		font-weight: 600;
+		cursor: pointer;
+		background-color: transparent;
+   }
+	.btn_cyan {
+		background-color: #38BAB2;
+		color: #ffffff;
+	}
 </style>
 </head>
 <body>
-	<strong><h2>비밀번호 재확인</h2></strong><br>
+   
+    <form>
+	   <fieldset>
+	   <strong><h1>비밀번호 재확인</h1></strong>
+	   <hr>
+	   <br>
 		<nav class="nav">
-		  <img src="mypage/unlock.png" width="150" height="100">
+		  <img src="../mypage/unlock.png" width="300" height="130">
 		</nav>
-	<p>아이디<input type="text" name="id" size="40" align="center"></p><br>
-	<p>비밀번호<input type="pass" name="pass" size="40"  align="center"></p><br>
-	<button type="button" align="ceneter" class="btn btn_mid btn_cyan" >확인</button>
-	<pre></pre><button type="button" align="ceneter" class="btn btn_mid btn_cyan" >취소</button>
-</div><br>
-</form>
+			<div style="height:40px; text-align:center;">
+			<p>아이디<input type="text" name="id" size="40" align="center"></p>
+			</div><br><br>
+			<div style="height:40px; text-align:center;">
+			<p>비밀번호<input type="text" name="pass" size="40"  align="center"></p><br>
+			</div><br><br><br><br><br>
+            <div style="height:40px; text-align:center;">
+            <button type="button"  class="btn btn_mid btn_cyan" >저장</button>
+            </div><br>
+        </fieldset>
+     </form>
 </body>
 </html>
