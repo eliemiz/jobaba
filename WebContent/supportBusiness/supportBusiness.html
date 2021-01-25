@@ -44,7 +44,7 @@
 			<div class="tabWrap sub_tabs">
 				<ul>
 					<li class="active"><a href="businessInfo.html" target="iframe"><h3>사업정보</h3></a></li>
-					<li><a href="afterApply.html" target="iframe"><h3>후기</h3></a></li>
+					<li id="temp"><a href="afterApply.html" target="iframe" onclick="test()"><h3>후기</h3></a></li>
 				</ul>
 			</div>
 			<section>
@@ -72,4 +72,9 @@
 	</main>
 </form>
 </body>
+<script type="text/javascript">
+	function test(){
+		document.querySelector("#temp").setAttribute('class','active');
+	}
+</script>
 </html>
