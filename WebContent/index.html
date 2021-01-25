@@ -12,7 +12,7 @@
 		<div class="top_setting clearFix">
 			<div class="top_setting_inner clearFix">
 				<div class="top_setting_left">
-					<div class="menu">
+					<div class="menu" onclick="onclickMenu()">
 						<div class="bar1"></div>
 						<div class="bar2"></div>
 						<div class="bar3"></div>
@@ -32,6 +32,29 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="header_menu">
+			<div class="header_menu_inner">
+				<div class="site_menu_box">
+					<p class="site_menu_title strong">잡아바 통합사이트 바로가기</p>
+					<ul>
+						<li class="go_menu"><a href="https://www.jobaba.net/main/main.do"><span class="go_img ty1"></span>잡아바</a></li>
+						<li class="go_menu"><a href="https://account.jobaba.net/main/intro.do"><span class="go_img ty2"></span>청년통장</a></li>
+						<li class="go_menu"><a href="https://youth.jobaba.net/introduction"><span class="go_img ty3"></span>청년지원사업</a></li>
+						<li class="go_menu"><a href="https://www.jobaba.net/youngMall/youngMall.do"><span class="go_img ty4"></span>경기청년몰</a></li>
+					</ul>
+				</div>
+				<div class="site_menu_box">
+					<p class="site_menu_title strong">패밀리사이트 바로가기</p>
+					<ul>
+						<li class="go_menu"><a href="https://www.gjf.or.kr/gjf/index.do"><span class="go_img ty5"></span>경기도일자리재단</a></li>
+						<li class="go_menu"><a href="https://www.dream.go.kr/dream/index.do"><span class="go_img ty6"></span>꿈날개</a></li>
+						<li class="go_menu"><a href="https://www.dreammaru.or.kr/www/index.do"><span class="go_img ty7"></span>꿈마루</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
 		<div class="search_wrap b_cyan clearFix">
 			<div class="search_inner">
 				<div class="search_box">
@@ -121,6 +144,24 @@
 		} else {
 			return;
 		}
+	}
+
+	var isMenuOpen = false;
+	function onclickMenu() {
+
+		if (isMenuOpen == false) {
+			document.querySelector(".menu")
+					.setAttribute("class", "menu change");
+			document.querySelector(".header_menu").setAttribute("class",
+					"header_menu on");
+			isMenuOpen = true;
+		} else {
+			document.querySelector(".menu").setAttribute("class", "menu");
+			document.querySelector(".header_menu").setAttribute("class",
+					"header_menu");
+			isMenuOpen = false;
+		}
+
 	}
 </script>
 </html>

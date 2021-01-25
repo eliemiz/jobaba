@@ -29,6 +29,18 @@
 	transition: 0.4s;
 }
 
+.top_setting_left .menu.change .bar1 {
+	transform: rotate(-45deg) translate(-4px, 4px);
+}
+
+.top_setting_left .menu.change .bar2 {
+	opacity: 0;
+}
+
+.top_setting_left .menu.change .bar3 {
+	transform: rotate(45deg) translate(-4px, -4px);
+}
+
 .top_setting_left .logo {
 	display: inline-block;
 }
@@ -60,9 +72,6 @@
 	padding-top: 7px;
 }
 
-/* .top_setting_right ul {
-	
-} */
 .top_setting_right ul li {
 	float: left;
 }
@@ -87,6 +96,92 @@
 	height: 30px;
 	position: relative;
 	line-height: 30px;
+}
+
+.header_menu {
+	position: absolute;
+	top: 94px;
+	width: 100%;
+	left: -100%;
+	padding: 50px 0;
+	background: #ffffff;
+	z-index: 9999;
+	border-top: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.header_menu.on {
+	left: 0%;
+}
+
+.header_menu_inner {
+	padding: 0 20px;
+}
+
+.site_menu_box {
+	padding-right: 79px;
+	float: left;
+}
+
+.site_menu_title {
+	font-size: 1.25rem;
+	padding-bottom: 30px;
+}
+
+.site_menu_box ul {
+	list-style: none;
+}
+
+.site_menu_box .go_menu {
+	margin-right: 10px;
+	float: left;
+	text-align: center;
+}
+
+.site_menu_box .go_menu a{
+	display:block;
+	width:140px;
+}
+
+.site_menu_box .go_menu a:hover {
+	color: #0056b3;
+	text-decoration: none;
+}
+
+.site_menu_box .go_menu .go_img {
+	width: 100%;
+	height: 140px;
+	border: 1px solid #eeeeee;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
+
+.site_menu_box .go_menu .go_img.ty1 {
+	background:#f6f7f8 url(../images/go_menu/go_img01.png) no-repeat center;
+}
+
+.site_menu_box .go_menu .go_img.ty2 {
+	background:#f6f7f8 url(../images/go_menu/go_img02.png) no-repeat center;
+}
+
+.site_menu_box .go_menu .go_img.ty3 {
+	background:#f6f7f8 url(../images/go_menu/go_img03.png) no-repeat center;
+}
+
+.site_menu_box .go_menu .go_img.ty4 {
+	background:#f6f7f8 url(../images/go_menu/go_img04.png) no-repeat center;
+}
+
+.site_menu_box .go_menu .go_img.ty5 {
+	background:#f6f7f8 url(../images/go_menu/go_img05.png) no-repeat center;
+}
+
+.site_menu_box .go_menu .go_img.ty6 {
+	background:#f6f7f8 url(../images/go_menu/go_img06.png) no-repeat center;
+}
+
+.site_menu_box .go_menu .go_img.ty7 {
+	background:#f6f7f8 url(../images/go_menu/go_img07.png) no-repeat center;
 }
 
 .search_wrap {
