@@ -12,7 +12,7 @@
 
 <div class="pd120 login_box">
     <div>
-	<h2 class="login_title">회원가입</h2>
+	<h2 class="strong" align="center">회원가입</h2>
 	</div>
 	
 	<div class="step_title">
@@ -23,6 +23,10 @@
 	<div>
 	<ul class="agree-accordion">
 	<!-- 이용약관 동의 -->
+	<li >
+
+	</li>
+	<!-- --------------------------------- -->
 	<li class="clear">
 	<label for="usestpltionAgreYn" class="fL"><span class="c-red t-ita"> [필수]</span> 이용약관 동의 </label>
 	<a class="fR "><span>약관보기</span></a>
@@ -331,9 +335,14 @@
 	
 	
 	<!-- 개인정보 수집 및 이용 동의 -->
-	<li class="clear">
+	<li >
+
+	</li>
+<!-- ---------------------------------- -->
 	
-	<label for="indifClctionAgreYn" class="fL"><span class="c-red t-ita">[필수]</span> 개인정보 수집 및 이용 동의</label>
+	
+	<li class="clear">
+	<label for="indifClctionAgreYn" class="fL" ><span class="c-red t-ita" > [필수]</span> 개인정보 수집 및 이용 동의</label>
 	<a class="fR"><span>약관보기</span></a>
 	<div class="hide_contents" style="display: none;">
 
@@ -502,12 +511,12 @@
 	<div class="login_txtbox mg_t10">
 							<div class="clear">
 								<div><label for="infrmAgreYn1" class="fL"><span class="t-ita c-gray">[선택]</span> 알림서비스 제공 동의</label>
-								<div style="text-align:right; margin-right:10px;">
-							<input   id="infrmAgreYn1" name="infrmAgreYn1" type="checkbox" value="1">
-					</div>
+									<div style="text-align:right; margin-right:10px;">
+									<input   id="infrmAgreYn1" name="infrmAgreYn1" type="checkbox" value="1">
+									</div>
 								</div>
 									
-									</div>
+							</div>
 							<div class="agree_descript">
 								<ul>
 									<li>알림서비스 제공에 동의 하시면 일자리플랫폼 및 정책지원정보, 그 밖의 전달사항을 SMS 또는 이메일 및 APPPUSH 등을 통해 알려드립니다.</li>
@@ -516,7 +525,7 @@
 						</div>
 <!-- -------------------------------------------- -->
 <br><br><br><br>
-							<div style="text-align:center;"><label><input type="checkbox" value="2" name="all_Ck">모두 동의</label></div>
+							<div style="text-align:center;"><label><input type="checkbox" value="2" name="all_ck" onclick='check_all(this);'>모두 동의</label></div>
 						
                                 <div style="text-align:right;">
 								<a href="/jobaba/signup/signup2.html"> 다음단계</a>
@@ -527,6 +536,16 @@
 	</div>
 	
 	<script type="text/javascript">
+
+	function check_all(){
+		// obj.checked
+		console.log()
+		document.querySelector("[name=usestpltionAgreYn]").checked=true;
+		document.querySelector("[name=indifClctionAgreYn]").checked=true;
+		document.querySelector("[name=infrmAgreYn1]").checked=true;
+	}
+	
+	
 
 
 
