@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	</header>
-	<iframe style="width: 100%; height: inherit;" name="main"
+	<iframe style="width: 100%;" name="main" onload="autoResize(this)"
 		src="main/main.html"></iframe>
 
 	<footer class="clearFix">
@@ -162,6 +162,11 @@
 			isMenuOpen = false;
 		}
 
+	}
+	
+	function autoResize(obj){
+		var iframeHeight = obj.contentWindow.document.body.scrollHeight;
+		obj.height = iframeHeight; 
 	}
 </script>
 </html>
