@@ -11,7 +11,7 @@
 <body>
 <div class="pd120 login_box">
 			<div>
-				<h2 class="login_title">회원가입</h2>
+				<h2 class="strong" align="center">회원가입</h2>
 			</div>
 				
 			
@@ -64,16 +64,11 @@
 							<input type="text" style="width:100%;"  class="text" id="rgstGender" name="rgstGender" maxlength="20" placeholder="성별을 입력하세요(남/여)">
 						</div>
 					</div>
-				<div class="step_btn_wrap">
-				
-				     <a href="/jobaba/signup/signup_finish.html">
-						<button type="button" class="btn btn_cyan fL" ><span>가입하기</span></button>
-						</a>
-						<a href="/jobaba/main/main.html">
-						<button type="button" class="btn btn_cyan fR" ><span>취소</span></button>
-						</a>
-					</div>
 
+<div class="step_btn_wrap">
+               <button type="button" class="btn btn_cyan fL" onclick="window.location.href='/jobaba/signup/signup_finish.html'"><span>가입하기</span></button>
+               <button type="button" class="btn btn_cyan fR" onclick="window.location.href='/jobaba/main/main.html'"><span>취소</span></button>
+            </div>
 </fieldset>
 
 
@@ -86,4 +81,19 @@
 
 	<!-- ------------------------------------------------------------ -->
 </body>
+<script type="text/javascript">
+/*
+ 
+ function pwConfirm(){
+	var origin=document.getElementById("pswd").value
+	var ispw=document.getElementById("pswd2").value
+	if(ispw===origin){
+		alert("비밀번호가 확인되었습니다.");
+	}else{
+		alert("입력하신 비밀번호와 다릅니다.");
+	}
+}
+
+*/
+</script>
 </html>
