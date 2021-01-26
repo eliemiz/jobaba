@@ -5,25 +5,26 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/jobaba/css/fonts.css">
 <link rel="stylesheet" href="/jobaba/css/common.css">
-<style>
-
+<style type="text/css">
+td{border:1px dashed lightgray;}
+table{border-radius:5px;
+border:1px solid lightgray; 
+}
 </style>
 </head>
 <body>
 <br><br>
-<div>
-<h2 align="center">아이디 찾기</h2>
-</div>
+<h2 align="center" class="strong">아이디 찾기</h2>
 <br><br>
-<table align="center" width="400" height="90" border><!-- 둥근 테두리 회색처리 -->
+<table align="center" width="400" height="90">
 <tr><td>&nbsp;&nbsp;[알림]아이디 찾기 안내</td></tr>
 <tr><td>&nbsp;&nbsp;휴대폰으로 찾기 </td></tr>
 </table>
-<form align="center">
+<form align="center" action="findid_fin.html" method="post">
 <br>
-<input type="text" name="id" size="46" placeholder="이름 입력하세요." align="center"><br>
-<input type="text" name="phone" size="46" placeholder="휴대폰번호를 입력하세요." align="center"><br><br>
-<div style="background-color: #38bab2; height:40px; text-align:center;" >
+<input style="border-radius:5px;" type="text" name="id" size="46" placeholder="이름 입력하세요."><br>
+<input style="border-radius:5px;" type="text" name="phone" size="46" placeholder="휴대폰번호를 입력하세요."><br><br>
+<div style="background-color: #38bab2; height:40px; width:150px; text-align:center; margin:auto;" >
 <button type="submit" style="width:150px;">다음</button>
 </div> 
 <div style="text-align:center;">
