@@ -36,15 +36,17 @@ td {
    padding-left: 15px;
 }
 fieldset {
-	  border-radius: 10px;
-	  padding: 30px;
-	}
+     border-radius: 10px;
+     padding: 30px;
+   }
 </style>
 </head>
 <body>
 <form>
-	   <fieldset>
-   <div>
+      <fieldset>
+      <h1><strong>비밀번호 재확인</strong></h1>
+      <hr>
+   <div class="clearFix">
       <div
          style="float:left; width: 200px; height: 200px; margin-right: 100px;">
          <img src="../mypage/unlock.png" alter="이미지" style="width: 100%; height: 100%">
@@ -53,17 +55,22 @@ fieldset {
          <table>
             <tr>
                <th>아이디</th>
-               <td>temp@temp.com
+               <td>temp123@temp.com</td>
             </tr>
             <tr>
                <th>비밀번호</th>
-               <td><input type="password" name="pass" size="40"  align="center">
+               <td><input type="password" name="pass" size="40"  align="center"></td>
             </tr>
          </table>
          
-         <a src="../mypage/mypage.html"><button type="submit" class="btn_mid btn_cyan">확인</button></a>
-         <a src="../main/main.html"><button type="submit" class="btn_mid" style="background-color:#aaaaaa;">취소</button></a>
+         <button type="button" class="btn_mid btn_cyan" onclick="location.href='mypage.html'">확인</button></a>
+         <button type="button" class="btn_mid" style="background-color:#aaaaaa;" onclick="location.href='../main/main.html'">취소</button></a>
       </div>
+       
+   </div>
+   <div style="text-align:center;">
+        ※ 본인확인을 위해 한번 더 비밀번호를 입력해주세요.<br>
+        ※ 회원님의 기본정보는 본인 동의 없이 절대 공개되지 않습니다.
    </div>
    </fieldset>
      </form>
