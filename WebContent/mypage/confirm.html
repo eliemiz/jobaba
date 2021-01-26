@@ -14,7 +14,9 @@
      }
      .nav { width: 15%; height: 10%; float: left; }
      form {
+         
          background-color:white;
+         border-radius: 10px;
      }
      button {
 		display: inline-block;
@@ -34,6 +36,10 @@
 		background-color: #38BAB2;
 		color: #ffffff;
 	}
+	fieldset {
+	  border-radius: 10px;
+	  padding: 30px;
+	}
 </style>
 </head>
 <body>
@@ -42,19 +48,27 @@
 	   <fieldset>
 	   <strong><h1>비밀번호 재확인</h1></strong>
 	   <hr>
-	   <br>
 		<nav class="nav">
-		  <img src="../mypage/unlock.png" width="300" height="130">
+		  <img src="../mypage/unlock.png" width="280" height="200">
 		</nav>
+	
 			<div style="height:40px; text-align:center;">
-			<p>아이디<input type="text" name="id" size="40" align="center"></p>
+			<p><strong>아이디</strong>&nbsp;&nbsp;
+			<input type="text" name="id" value="user_id" disabled="disabled" size="40" align="center"></p>
 			</div><br><br>
 			<div style="height:40px; text-align:center;">
-			<p>비밀번호<input type="text" name="pass" size="40"  align="center"></p><br>
+			<p><strong>비밀번호</strong>&nbsp;&nbsp;
+			<input type="password" name="pass" size="40"  align="center"></p><br>
 			</div><br><br><br><br><br>
             <div style="height:40px; text-align:center;">
-            <button type="button"  class="btn btn_mid btn_cyan" >저장</button>
-            </div><br>
+            <button type="button"  class="btn btn_mid btn_cyan" >확인</button>
+            <button type="button"  class="btn btn_mid btn_cyan" >취소</button>
+            </div>
+            <br>
+            <div style="text-align:center;">
+            ※ 본인확인을 위해 한번 더 비밀번호를 입력해주세요.<br>
+            ※ 회원님의 기본정보는 본인 동의 없이 절대 공개되지 않습니다.
+            </div>
         </fieldset>
      </form>
 </body>
