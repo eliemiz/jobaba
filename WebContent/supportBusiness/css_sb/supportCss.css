@@ -2920,12 +2920,12 @@ section .main_section_inner .sub_tit{font-size: 12px;display: none}
 .sub_tit2,.list_tit h2{font-size: 18px} 
   
 /*서브 검색창*/
-.search{padding-left:0;padding-right: 10px}
-.search .table td input{height: 35px;font-size: 12px}
-.search .w86p{width: calc(100% - 80px) !important}  
-.search .w14p{width: 80px !important;margin-top: 6px !important}
-.search .btn.icon_search {height: 35px;line-height: 35px;font-size: 11px;width: 100%;background-position: left 10px center}
-.search .table td input::placeholder{font-size: 12px}
+.search{padding-left:0;padding-right: 10px;}
+.search .table td input{height: 35px;font-size: 12px;}
+.search .w86p{width: calc(100% - 80px) !important;}  
+.search .w14p{width: 80px !important;margin-top: 6px !important;}
+.search .btn.icon_search {height: 35px;line-height: 35px;font-size: 11px;width: 100%;background-position: left 10px center;}
+.search .table td input::placeholder{font-size: 12px;}
 
   
 /*상세내용 table*/
