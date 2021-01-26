@@ -5,485 +5,12 @@
 <link rel="stylesheet" href="../css/fonts.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="/jobaba/supportBusiness/css_sb/style.css">
+<link rel="stylesheet" href="/jobaba/supportBusiness/css_sb/common.css">
 <title>Insert title here</title>
 </head>
 <body>
 <div id="jobaba_wrap">
-<script>
-	$(document).ready(function() {
-
-		//오늘날짜 가져오기 yyyyMMddHHmmss
-		var toDay  = getTodate();
-		var check  = '';
-		if('20211031180000' != "" && '20211031180000' != null){
-			if('20211031180000' > toDay ){
-				getTimeDiff();	//지원기간 남은시간조회
-				if(check == ''){//상시,모집마감시가 아니면
-					getDday();		//Day표시
-				}
-			}
-		}
-
-		function callback(status, result) {
-			var mapContainer = document.getElementById('insttMap'+id); // 지도를 표시할 div
-		 	mapOption = {
-					        center: new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng), // 지도의 중심좌표
-					        level: 4, // 지도의 확대 레벨
-					        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
-					    };
-			// 지도를 생성한다
-			var map = new daum.maps.Map(mapContainer, mapOption);
-
-			// 지도에 마커를 생성하고 표시한다
-			var marker = new daum.maps.Marker({
-			    position: new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng), // 마커의 좌표
-			    map: map // 마커를 표시할 지도 객체
-			});
-			id=id+1;
-		}
-
-		// PC에선 전화걸기 숨기기
-		if(!isMobileApp() && !isMobileWeb()) {
-			$("li[id^='phone']").hide();
-		}
-
-		fn_saveActLog();
-
-
-	});
-
-	/**
-	* 설명		: 활동 로그 저장
-	* 파라미터	: 없음
-	* return	    : 없음
-	*/
-	function fn_saveActLog() {
-		/* var actUrl = document.referrer; */
-		if (GetIEVersion() > 0){
-			if (typeof(opener) != "undefined") {
-				var actUrl = window.opener.document.URL;
-			} else {
-				var actUrl = document.referrer;
-			}
-		} else {
-			var actUrl = document.referrer;
-		}
-		//actUrl = actUrl.substring(0, 1000);
-		var nowUrl = window.location.href;
-		//nowUrl = nowUrl.substring(0, 1000);
-		var actCntntsTypeCd = "01";
-		var actCntntsSeq = "577";
-
-		if (actUrl == "") {
-			actUrl = nowUrl;
-			//return false;
-		}
-
-	    var chkRsltPos = 0;
-	    chkRsltPos = nowUrl.indexOf("postId");
-
-	    if (chkRsltPos > -1) {
-		    var postId = nowUrl.substring(chkRsltPos + 7, chkRsltPos + 10);
-		    postId = jQuery.trim(postId);
-	    } else {
-		    var postId = "";
-	    }
-
-		$.ajax({
-			  url				: "https://www.jobaba.net/actLog/saveActLog.do"
-			, type			    : "POST"
-			, contentType	: "application/x-www-form-urlencoded; charset=UTF-8"
-			, dataType		: "json"
-			, data			    : {"actUrl" : actUrl, "postId" : postId, "actCntntsTypeCd" : actCntntsTypeCd, "actCntntsSeq" : actCntntsSeq, "actCntntsUrl" : nowUrl}
-		});
-	}
-
-	//관심 카운트
-	function heartOnOffChg(type){
-
-		var seq = "577";
-		// 로그인 여부
-		var login = false;
-		if(type == "ON"){
-
-			if(login) {
-
-				$.ajax({
-					url : "/sprtPlcy/info/sprtPlcyIntrstAjax2020.do"
-					,type : "POST"
-					,contentType : "application/x-www-form-urlencoded; charset=UTF-8"
-					,dataType : "json"
-					,data : {
-						"seq" : seq
-						,"intrstType" : "DOWN"
-						,"cntntsTypeCd" : "01"
-					}
-					,success : (
-						function(result) {
-							if(result > 0) {
-								$("#heartOff").show();
-								$("#heartOn").hide();
-							}
-						}
-					)
-					,error : (
-						function(errMsg) {
-							alertLayerPopup("알림","처리 중 문제가 발생하였습니다.", null);
-						}
-					)
-				});
-			}
-
-		}else{
-
-			if(login) {//로그인시에만 스크랩
-				$.ajax({
-					url : "/sprtPlcy/info/sprtPlcyIntrstAjax2020.do"
-					,type : "POST"
-					,contentType : "application/x-www-form-urlencoded; charset=UTF-8"
-					,dataType : "json"
-					,data : {
-						"seq" : seq
-						,"intrstType" : "UP"
-						,"cntntsTypeCd" : "01"
-					}
-					,success : (
-						function(result) {
-							if(result >0) {
-								$("#heartOff").hide();
-								$("#heartOn").show();
-								scrapLayerPopup("스크랩","마이페이지>관심등록 정보에서<br/>스크랩 정보를 확인할 수 있습니다.");
-							}
-						}
-					)
-					,error : (
-						function(errMsg) {
-							alertLayerPopup("알림","처리 중 문제가 발생하였습니다.", null);
-						}
-					)
-				});
-			}else{
-				loginLayerPopup("로그인", "로그인후 이용 하여 주세요.");
-				return false;
-			}
-
-		}
-	}
-
-
-
-	//태그 클릭시 리스트로 전환
-	function onSprtPlcyList(tagNm){
-		var frm = document.getElementById("srchFrm");
-		$("#srchTagListNm").val(tagNm);
-		frm.submit();
-	}
-
-	function onInsttGeoinfoDtl(seq){
-		var insttGeoSeq = seq;
-		if(insttGeoSeq != "0") {
-			location.href = "/geoinfo/dtl.do?seq=" + insttGeoSeq + "&sn=&orderByType=&orderByKey=&srchTag1=&srchTag2=&srchTagBottom=&srchTagListNm=&schCl1Cd=&schCl2Cd=&schCl3Cd=&schCl4Cd=&cdNm=&schType=&schTxt=&cl1Cd=&cl2Cd=&cl3Cd=&cl4Cd=&refKey=&srchDtlYn=&srchLegalCd=&srchLfcCd=&srchSpclzTrgetCd=&srchClCd=&srchOperStat=&srchRqtMthCd=&srchEpmtStatCd=&srchDtlYn_=&srchLegalCd_=&srchLfcCd_=&srchSpclzTrgetCd_=&srchClCd_=&srchOperStat_=&srchRqtMthCd_=&srchEpmtStatCd_=&schTxt_=&rtnUrl=&rqtIng=&eduIng=&startDateValue=&endDateValue=&startDay=&endDay=&searchDay=&searchDateValue=&srchSexdstCd=&srchJobSprt=&srchLifeSprt=&srchHsSprt=&srchWrkSprt=&srchEntSprt=&srchCopSprt=&srchSexdstCd_=&srchJobSprt_=&srchLifeSprt_=&srchHsSprt_=&srchWrkSprt_=&srchEntSprt_=&srchCopSprt_=&srchBenefitCd=&srchBenefitCd_=&cntType=&srchRqtStat=&srchRecordCountPerPage=&recordCountPerPage=10&regUsr=SYSTEM&updUsr=SYSTEM"
-		}
-	}
-
-	function onImGeoinfoDtl(seq){
-		var imGeoSeq = seq;
-		if(imGeoSeq != "0") {
-			location.href = "/geoinfo/dtl.do?seq=" + imGeoSeq + "&sn=&orderByType=&orderByKey=&srchTag1=&srchTag2=&srchTagBottom=&srchTagListNm=&schCl1Cd=&schCl2Cd=&schCl3Cd=&schCl4Cd=&cdNm=&schType=&schTxt=&cl1Cd=&cl2Cd=&cl3Cd=&cl4Cd=&refKey=&srchDtlYn=&srchLegalCd=&srchLfcCd=&srchSpclzTrgetCd=&srchClCd=&srchOperStat=&srchRqtMthCd=&srchEpmtStatCd=&srchDtlYn_=&srchLegalCd_=&srchLfcCd_=&srchSpclzTrgetCd_=&srchClCd_=&srchOperStat_=&srchRqtMthCd_=&srchEpmtStatCd_=&schTxt_=&rtnUrl=&rqtIng=&eduIng=&startDateValue=&endDateValue=&startDay=&endDay=&searchDay=&searchDateValue=&srchSexdstCd=&srchJobSprt=&srchLifeSprt=&srchHsSprt=&srchWrkSprt=&srchEntSprt=&srchCopSprt=&srchSexdstCd_=&srchJobSprt_=&srchLifeSprt_=&srchHsSprt_=&srchWrkSprt_=&srchEntSprt_=&srchCopSprt_=&srchBenefitCd=&srchBenefitCd_=&cntType=&srchRqtStat=&srchRecordCountPerPage=&recordCountPerPage=10&regUsr=SYSTEM&updUsr=SYSTEM"
-		}
-	}
-
-	function onRiGeoinfoDtl(seq){
-		var riGeoSeq = seq;
-		if(riGeoSeq != "0") {
-			location.href = "/geoinfo/dtl.do?seq=" + riGeoSeq + "&sn=&orderByType=&orderByKey=&srchTag1=&srchTag2=&srchTagBottom=&srchTagListNm=&schCl1Cd=&schCl2Cd=&schCl3Cd=&schCl4Cd=&cdNm=&schType=&schTxt=&cl1Cd=&cl2Cd=&cl3Cd=&cl4Cd=&refKey=&srchDtlYn=&srchLegalCd=&srchLfcCd=&srchSpclzTrgetCd=&srchClCd=&srchOperStat=&srchRqtMthCd=&srchEpmtStatCd=&srchDtlYn_=&srchLegalCd_=&srchLfcCd_=&srchSpclzTrgetCd_=&srchClCd_=&srchOperStat_=&srchRqtMthCd_=&srchEpmtStatCd_=&schTxt_=&rtnUrl=&rqtIng=&eduIng=&startDateValue=&endDateValue=&startDay=&endDay=&searchDay=&searchDateValue=&srchSexdstCd=&srchJobSprt=&srchLifeSprt=&srchHsSprt=&srchWrkSprt=&srchEntSprt=&srchCopSprt=&srchSexdstCd_=&srchJobSprt_=&srchLifeSprt_=&srchHsSprt_=&srchWrkSprt_=&srchEntSprt_=&srchCopSprt_=&srchBenefitCd=&srchBenefitCd_=&cntType=&srchRqtStat=&srchRecordCountPerPage=&recordCountPerPage=10&regUsr=SYSTEM&updUsr=SYSTEM"
-		}
-	}
-
-	// 길찾기
-	function onPath(mainTitle, addr) {
-		var geocoder = new daum.maps.services.Geocoder();
-		var url = "http://map.daum.net/link/map/";
-
-		try {
-			function callback(result, status) {
-				if(status === daum.maps.services.Status.OK) {
-					url += mainTitle + "," + result[0].road_address.y + "," + result[0].road_address.x;
-					//location.href = url;
-					//window.open(url, "_blank");
-
-					if(isMobileApp()){
-						location.href = url;
-						// window.open(url, "_blank");
-					}else{
-						$("#mapFrm").attr("action", url);
-						$("#mapFrm").submit();
-					}
-				}
-			}
-			geocoder.addressSearch(addr, callback);
-		} catch(e) {
-			//
-		}
-	}
-
-	//내 폰에서 보기
-	function onPhoneSmsPopup() {
-		var url = "/cmmn/phoneSms/phoneSmsPopup.do?seq="+"577&cntsUrl=https://www.jobaba.net/sprtPlcy/&titleNm=" + encodeURI(encodeURIComponent("고양시 청년캣 취업 사관학교"));
-		modalLayerPopup('내 폰에서 보기', '', url)
-	}
-
-	function onList() {
-		if (history.pushState) {
-			var rtnUrl = "/sprtPlcy/info/list2020.do?sn=&orderByType=&orderByKey=&srchTag1=&srchTag2=&srchTagBottom=&srchTagListNm=&schCl1Cd=&schCl2Cd=&schCl3Cd=&schCl4Cd=&cdNm=&schType=&schTxt=&cl1Cd=&cl2Cd=&cl3Cd=&cl4Cd=&refKey=&srchDtlYn=&srchLegalCd=&srchLfcCd=&srchSpclzTrgetCd=&srchClCd=&srchOperStat=&srchRqtMthCd=&srchEpmtStatCd=&srchDtlYn_=&srchLegalCd_=&srchLfcCd_=&srchSpclzTrgetCd_=&srchClCd_=&srchOperStat_=&srchRqtMthCd_=&srchEpmtStatCd_=&schTxt_=&rtnUrl=&rqtIng=&eduIng=&startDateValue=&endDateValue=&startDay=&endDay=&searchDay=&searchDateValue=&srchSexdstCd=&srchJobSprt=&srchLifeSprt=&srchHsSprt=&srchWrkSprt=&srchEntSprt=&srchCopSprt=&srchSexdstCd_=&srchJobSprt_=&srchLifeSprt_=&srchHsSprt_=&srchWrkSprt_=&srchEntSprt_=&srchCopSprt_=&srchBenefitCd=&srchBenefitCd_=&cntType=&srchRqtStat=&srchRecordCountPerPage=&recordCountPerPage=10&regUsr=SYSTEM&updUsr=SYSTEM&currentPageNo=1" + "#577";
-			location.href = rtnUrl;
-		}else{
-			history.back();
-		}
-	}
-
-	// 알림신청
-	function alarmPopup(type) {
-
-		var login = false;
-
-		//조상현 추가
-		var rqtEndDe = "2021-10-31";				//모집종료일
-		var rgtEndDate = rqtEndDe.replace(/-/gi,"");
-		var toDay  = getTodate().substring(0,8);
-		if(toDay> rgtEndDate){
-			alert("모집일정 종료일 이전까지만 신청 가능합니다.");
-			return false;
-		}
-
-		var seq = "577";
-
-		if(login) {
-			var infrmAgreYn = "";
-
-			if(infrmAgreYn == "Y") {
-				modalLayerPopup("알림신청", "", "/mber/myPage/infrm/infrmPopup.do?cntntsTypeCd=01&cntntsSeq=" + seq + "&cntntsSn=0");
-
-				//주석처리 - 알람 설정 후 infrmPopup.jsp에서  jQuery적용 조상현 2020.08.11
-//				//취소없음
-//				if(type == "ON"){
-//					$("#alarmOn").hide();
-//					$("#alarmOff").show();
-//				}else{
-//					$("#alarmOn").show();
-//					$("#alarmOff").hide();
-//				}
-
-
-			} else {
-				//alertLayerPopup("알림", "알림 서비스 제공 동의가 필요합니다.", null);
-				scrapLayerPopup("알림","마케팅 수신 동의가 필요합니다.<br/>마이페이지>개인정보관리에서<br/>설정 가능합니다.");
-
-			}
-		} else {
-			loginLayerPopup("알림", "로그인후 이용 하여 주세요.");
-		}
-	}
-
-	// 홈페이지 바로가기 카운트
-	function homeGoCntUp(seq , url) {
-		var paramStr = "&seq="+seq;
-		$.ajax({
-			type			: 'post'
-			,async			: false
-			,url			: '/sprtPlcy/info/homeGoCntUp.do'
-			,contentType	: "application/x-www-form-urlencoded; charset=UTF-8"
-			,data			: paramStr
-			,dataType		: "json"
-			,success		: (
-				function(obj) {
-					if(obj.RESULT == "OK") {
-						window.open(url ,'_blank');
-					}
-				}
-			)
-			,error			: (
-				function(errMsg) {
-					alert("불러오기를 실패 했습니다.")
-				}
-			)
-        });
-	}
-
-	// 접수하기 카운트
-	function rcptLinkCntUp(seq , url) {
-
-		var paramStr = "&seq="+seq;
-		$.ajax({
-			type			: 'post'
-			,async			: false
-			,url			: '/sprtPlcy/info/rcptLinkCntUp.do'
-			,contentType	: "application/x-www-form-urlencoded; charset=UTF-8"
-			,data			: paramStr
-			,dataType		: "json"
-			,success		: (
-				function(obj) {
-					if(obj.RESULT == "OK") {
-						window.open(url ,'_blank');
-					}
-				}
-			)
-			,error			: (
-				function(errMsg) {
-					alert("불러오기를 실패 했습니다.")
-				}
-			)
-        });
-	}
-
-	/**
-	* 설명		: 상세 활동 로그 저장
-	* 파라미터	: 없음
-	* return	    : 없음
-	*/
-	function fn_mberActLog(seq , url, rcptLinkAt) {  // 접수하기 링크및 카운트를위한 파라미터(rcptLinkAt)추가 조상현 2019.10.29
-		var btnTypeCd = '01';
-		var actCntntsTypeCd = "01";
-		var actCntntsSeq = seq;
-		var moveUrl = url;
-
-		if (moveUrl == "") {
-			return false;
-		}
-
-		/*
-		* type: remove
-		* date: 2019.01.23
-		* author: inkium01
-		* comment: koost 코드 제거 요청(추천서비스관련)
-		*/
-		// _adlib_trk_buy(url);		//추천서비스 관련 스크립트
-
-		$.ajax({
-			  url				: "https://www.jobaba.net/actLog/mberActLog.do"
-			, type			    : "POST"
-			, contentType	: "application/x-www-form-urlencoded; charset=UTF-8"
-			, dataType		: "json"
-			, data			    : {"btnTypeCd" : btnTypeCd, "actCntntsTypeCd" : actCntntsTypeCd, "actCntntsSeq" : actCntntsSeq, "moveUrl" : moveUrl}
-			, success		: (
-				function(obj) {
-					if(obj.RESULT == "OK") {
-
-						if(rcptLinkAt == '01'){ // 접수하기 카운트 추가 조상현 2019.10.29
-							rcptLinkCntUp(seq , url);
-						}else{
-							homeGoCntUp(seq , url);
-						}
-
-					}
-				}
-			)
-			, error			: (
-				function(errMsg) {
-					alert("상세 활동 로그 저장을 실패 했습니다.")
-				}
-			)
-		});
-	}
-
-//D-day 표시(D-day 날짜 제한 미적용 로직 조상현 2020.08.06)
-function getDday(){
-	var today = new Date()
-	// 시작일시
-	var startTime = getTodate();
-	// 종료일시
-    var endTime  = '20211031180000';
-    // 시작일시
-   var startDate = new Date(parseInt(startTime.substring(0,4), 10),
-              parseInt(startTime.substring(4,6), 10)-1,
-              parseInt(startTime.substring(6,8), 10),
-              parseInt(startTime.substring(8,10), 10),
-              parseInt(startTime.substring(10,12), 10),
-              parseInt(startTime.substring(12,14), 10)
-             );
-
-    // 종료일시
-   var endDate   = new Date(parseInt(endTime.substring(0,4), 10),
-              parseInt(endTime.substring(4,6), 10)-1,
-              parseInt(endTime.substring(6,8), 10),
-              parseInt(endTime.substring(8,10), 10),
-              parseInt(endTime.substring(10,12), 10),
-              parseInt(endTime.substring(12,14), 10)
-             );
-
-   // 두 일자(startTime, endTime) 사이의 차이를 구한다.
-	var dateGap = endDate.getTime() - startDate.getTime();
-    // 두 일자(startTime, endTime) 사이의 간격을 "일-시간-분"으로 표시한다.
-	var diffDay  = Math.floor(dateGap / (1000 * 60 * 60 * 24));
-
-	if(endTime.length > 10){
-		var  html2 = "<span class='label d-Day'>D - " + diffDay + "일</span> ";
-		 $(".label_area").append(html2);
-	 }
-}
-
-	/**
-	* 설명		: 상세 활동 로그 저장
-	* 파라미터	: 없음
-	* return	    : 없음
-	*/
-	function getTimeDiff(){
-		var today = new Date()
-		// 시작일시
-		var startTime = getTodate();
-		// 종료일시
-	    var endTime  = '20211031180000';
-	    // 시작일시
-	   var startDate = new Date(parseInt(startTime.substring(0,4), 10),
-	              parseInt(startTime.substring(4,6), 10)-1,
-	              parseInt(startTime.substring(6,8), 10),
-	              parseInt(startTime.substring(8,10), 10),
-	              parseInt(startTime.substring(10,12), 10),
-	              parseInt(startTime.substring(12,14), 10)
-	             );
-
-	    // 종료일시
-	   var endDate   = new Date(parseInt(endTime.substring(0,4), 10),
-	              parseInt(endTime.substring(4,6), 10)-1,
-	              parseInt(endTime.substring(6,8), 10),
-	              parseInt(endTime.substring(8,10), 10),
-	              parseInt(endTime.substring(10,12), 10),
-	              parseInt(endTime.substring(12,14), 10)
-	             );
-
-	   // 두 일자(startTime, endTime) 사이의 차이를 구한다.
-		var dateGap = endDate.getTime() - startDate.getTime();
-		var timeGap = new Date(0, 0, 0, 0, 0, 0, endDate - startDate);
-
-	    // 두 일자(startTime, endTime) 사이의 간격을 "일-시간-분"으로 표시한다.
-		var diffDay  = Math.floor(dateGap / (1000 * 60 * 60 * 24));
-		var diffHour = timeGap.getHours();       // 시간
-		var diffMin  = timeGap.getMinutes() < 10? "0" + timeGap.getMinutes(): timeGap.getMinutes();      // 분
-		var diffSec  = timeGap.getSeconds() < 10? "0" + timeGap.getSeconds(): timeGap.getSeconds();      // 초
-
-		var html = "";
-		html += "" + diffDay + "일 " + diffHour + ":" + diffMin + ":" + diffSec;
-
-		$("#timeDiff").html(html);
-		newtime = window.setTimeout("getTimeDiff();", 1000);
-	}
-
-	function getTodate(){
-		var today = new Date()
-		var toDate = "" + today.getFullYear() +
-						(today.getMonth() + 1 < 10? "0" + (today.getMonth() + 1): today.getMonth() + 1) +
-						(today.getDate() < 10? "0" + today.getDate(): today.getDate()) +
-						(today.getHours() < 10? "0" + today.getHours(): today.getHours()) +
-						(today.getMinutes() < 10? "0" + today.getMinutes(): today.getMinutes()) +
-						(today.getSeconds() < 10? "0" + today.getSeconds(): today.getSeconds());
-		return toDate;
-	}
-
-	function onMyScrap(){
-		console.log("F");
-	}
-
-</script>
 <div class="contents-wrap">
 	<div class="container clearfix">
 		<div class="view-wrap">
@@ -498,216 +25,110 @@ function getDday(){
 				<div class="sub_note">
 					<div class="note">
 						<table>
-							<tbody><tr>
-								<th>지원기간</th>
-								<td>
-									
-										
-											2021-01-11(월) 9:00부터 <br>
-											 2021-10-31(일) 18:00 까지
-										
-										
-									
-									
-										
-										
-										
-											
-										
-									
-								</td>
-							</tr>
-							<tr>
-								<th>지원대상</th>
-								<td>○자격요건:&nbsp;@@시에&nbsp;주소를&nbsp;두고&nbsp;있는&nbsp;만18세~39세&nbsp;청년구직자&nbsp;</td>
-							</tr>
-						</tbody></table>
-
-
-						<div class="tab_detail_con img_control">
-							
-								<img src="/file/image.do?filePath=PT0S059OST+BsgQLBnmHPtNgeNOdvWA/nir9D/C22CRqbXOyzoyIa4pM7L75QoKe" alt="포스터" style="width: 100%; height: 100%;">
-							
+							<tbody>
+								<tr>
+									<th>지원기간</th>
+									<td>
+												2021-01-11(월) 9:00부터 <br>
+												 2021-10-31(일) 18:00 까지
+									</td>
+								</tr>
+								<tr>
+									<th>지원대상</th>
+									<td >○자격요건:&nbsp;@@시에&nbsp;주소를&nbsp;두고&nbsp;있는&nbsp;만18세~39세&nbsp;청년구직자&nbsp;</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="tab_detail_con img_control">							
+							<img src="/jobaba/supportBusiness/img/poster.png" alt="포스터" style="width: 100%; height: auto;">							
 							<h2 class="mgb10">지원내용</h2>
-							
-								
-								
-								
-							
+<!-- 							<div class="mgt10 mgb30">
+									1. 서비스 이용절차<br>
+									&nbsp; &nbsp;서비스신청(온라인신청) -&gt;신청승인(복지정책과 승인문자발송) -&gt;정장대여(업체 이용자 예약) -&gt;정장반납(3박4일)<br>
+									&nbsp; &nbsp;* 경기도일자리플랫폼 ‘잡아바’ <a href="https://apply.jobaba.net/" rel="noopener noreferrer" target="_blank">https://apply.jobaba.net</a>&nbsp; / 본인인증 및 신청, 면접증빙서류 등 첨부<br>
+									&nbsp; &nbsp;* 대여업체 방문대여 (신분증 지참) ※ 전화대여 시 택배발송<br>
+									<br>
+									2. 신청요령<br>
+									&nbsp; ❍ 신청기간 : 2021년 1월 1일 ~ 상시<br>
+									&nbsp; ❍ 신청자격 : 평택시 거주 청년 구직자(만19~39세)&nbsp; &nbsp; &nbsp;<br>
+									&nbsp; ❍ 장소(문의처) : 평택시청 복지정책과&nbsp; ☎ (031)8024-3045<br>
+									&nbsp; ❍ 신청방법 : 경기도일자리플랫폼 ‘잡아바’https://apply.jobaba.net 온라인 신청<br>
+									&nbsp; ❍ 제출서류 : 신청서(온라인작성), 개인정보동의서(온라인작성)<br>
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ※ 최초 신청 시, 워크넷 구직등록 필수, 구직인증번호 16자리 기재<br>
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;면접증빙서류(면접통보 메일, 문자 등 캡처)<br>
+									<br>
+									3. 대여품목 등<br>
+									&nbsp; ❍&nbsp; 대여업체명 : (신촌점) 마이스윗인터뷰&nbsp; ☎ 070-8160-3010<br>
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(소재지) 서울시 서대문구 신촌로 87-8 다니엘빌딩 3층<br>
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(사당점) 마이스윗인터뷰&nbsp; ☎ 02-522-3010<br>
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(소재지) 서울시 관악구 승방6길 34 성창빌딩 1층<br>
+									&nbsp;❍&nbsp; 대여물품(면접정장)<br>
+									&nbsp; &nbsp; &nbsp; - 남자 : 자켓, 바지, 셔츠, 구두, 벨트, 타이<br>
+									&nbsp; &nbsp; &nbsp; - 여자 : 자켓, 스커트 또는 바지, 블라우스, 구두<br>
+									&nbsp;❍&nbsp; 대여기준(1인 1세트 기준)<br>
+									&nbsp; &nbsp; &nbsp; - 대여횟수 : 연간 총 5회 이하<br>
+									&nbsp;&nbsp;&nbsp; &nbsp; - 대여기간 : 3박4일/회(1박 연장가능), 대여기간 내 반납<br>
+									&nbsp; &nbsp; &nbsp;&nbsp;- 반납방법 : 직접 대여업체 방문 반납 또는 택배 이용<br>
+									<br>
+									4. 유의사항<br>
+									&nbsp; ❍ 신청 서류 정보가 부정확하거나 사실과 다를 경우, 제출서류가 누락된&nbsp; 경우에는 지원 대상자 선정에서 배제될 수 있음<br>
+									&nbsp; &nbsp; &nbsp;온라인 신청시 이름, 핸드폰번호, 주민등록상 거주지 정확히 입력하여야함 (정확히 입력하지 않을 시 지원 불가)<br>
+									&nbsp; ❍ 전화 미수신 및 문자 미확인 등의 사유로 연락이 불가능하거나, 보완서류 요청에 응하지 않을 경우 선발에서 배제될 수 있음<br>
+									&nbsp; ❍ 최초대여 신청은 반드시 대여업체를 직접 방문 대여해야 함 원칙이나 방문이 어려운 경우 대여업체 사전상담 후 택배수령 가능하며,<br>
+									&nbsp; &nbsp; &nbsp;이후 방문 없이 택배(온라인) 대여가능<br>
+									&nbsp; ❍ 대여기간 연장 및 반납이 지체될 경우 추가되는 비용은 서비스 이용자가부담함<br>
+									&nbsp; ❍ 의류 손상(훼손), 분실될 경우 서비스 이용자가 부담하여야함<br>
+									&nbsp; ❍ 사업비 조기 소진 시 중단될 수 있음<br>
+									&nbsp;
+								</div> -->
 							<h2 class="mgb10">이용방법</h2>
-							
-								
-								
-								
-							
-
-							
-								
-									<div>○&nbsp;온라인&nbsp;신청접수&nbsp;:&nbsp;일자리지원사업&nbsp;통합접수시스템(https://apply.jobaba.net)</div>
-								
-								
-							
-							
+							<div>
+								○&nbsp;온라인&nbsp;신청접수&nbsp;:&nbsp;일자리지원사업&nbsp;통합접수시스템(https://apply.jobaba.net)<br>
+							</div>
 						</div>
-
 					</div>
 				</div>
 				<!-- 참고자료 -->
 				<div class="reference_note">
 						<div class="tit_area">
-							<h1 style="top: -90px;position: relative;" id="detailLocation"></h1>
+							<h1 style="top: -90px; position: relative;" id="detailLocation"></h1>
 							<p class="tit">기관위치/연락처</p>
 						</div>
 						<div class="list_area">
 							<ul>
-								<form name="mapFrm" id="mapFrm" target="_blank"></form>
-								
-									<input type="hidden" name="insttMaps" id="insttMaps0" value="">
-									<input type="hidden" name="mapcodintLats" id="mapcodintLat0" value="37.6642232104">
-									<input type="hidden" name="mapcodintLngs" id="mapcodintLng0" value="126.7659384333">
-									<input type="hidden" name="rdnmads" id="rdnmad0" value="경기 @@시 @@구 @@로 32-16">
-									<input type="hidden" name="pstintNms" id="pstintNm0" value="@@시통합일자리센터">
+								<li>
+									<p class="s_tit wid80">
+										<span class="bold">기관명</span>@@시통합일자리센터
+									</p>
 									
-										<li>
-											<p class="s_tit wid80">
-												<span class="bold">기관명</span>@@시통합일자리센터
-											</p>
+								</li>
+								<li>
+									<p class="s_tit wid80">
+										<span class="bold">주소</span>경기 @@시 @@구 @@로 32-16 @@고용복지플러스 센터 1층
+									</p>
+									<a href="javascript:void(0);" onclick="onPath('@@시통합일자리센터', '경기 @@시 @@구 @@로 32-16');"><p class="go_btn map">지도보기</p>	</a>
+								</li>
+								<li>
+									<p class="s_tit wid80">
+										<span class="bold">전화번호</span>
 											
-										</li>
-										<li>
-											<p class="s_tit wid80">
-												<span class="bold">주소</span>경기 @@시 @@구 @@로 32-16 @@고용복지플러스 센터 1층
-											</p>
-											<a href="javascript:void(0);" onclick="onPath('@@시통합일자리센터', '경기 @@시 @@구 @@로 32-16');">
-												<p class="go_btn map">지도보기</p>
-											</a>
-										</li>
-										<li>
-											<p class="s_tit wid80">
-												<span class="bold">전화번호</span>
-													
-														031-1234-5678
-													
-											</p>
-										</li>
-										<li>
-											<p class="s_tit wid80">
-												<span class="bold">이메일</span>
-													
-											</p>
-										</li>
-									
-								
+												031-1234-5678
+											
+									</p>
+								</li>
+								<li>
+									<p class="s_tit wid80">
+										<span class="bold">이메일</span>
+											
+									</p>
+								</li>						
 							</ul>
 						</div>
 					</div>
-				<div class="notice_area">
-					<p>
-						본 정보는 경기도일자리재단이 각 기관 및 홈페이지에서 제공하거나 수집한 내용을 토대로 편집, 그 표현방법을 수정하여 완성한 것으로 재단의 동의없이 무단전재 및
-						재배포, 재가공할 수 없습니다. 재단은 자료에 대한 오류와 사용자가 이를 신뢰하여 취한 조치에 대해 책임을 지지 않습니다.<br><br>
-
-						해당 정보는 서비스 제공기관의 사정, 기간변경 등 다양한 원인으로 언제든지 변경될 수 있으며, 현행화의 시간차이 등으로 100% 정확하지 않을 수 있으니, 반드시
-						해당기관의 홈페이지 또는 전화문의를 통하여 확인하시기 바랍니다.<br><br>
-
-						정보통신망법 제50조에 따라 본 게시물 상의 연락처는 내용상의 서비스 제공에 대한 문의 외에 사전동의 없이 전자메일 등으로 광고성 정보를 전송 및 연락하는 행위
-						를 하면 안됩니다.​
-					</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
-
-
-<!-- <div>
-	<div>
-		<ul>
-			<li><a href="#detailContent">상세정보</a></li>
-			<li><a href="#detailLocation">기관위치/연락처</a>
-		</ul>
-	</div>
-	<div>
-		<h1 stype="top: -210px; position: relative;" id="detailContent"></h1>
-		<div>
-			<table>
-				<tbody>
-					<tr><th>지원기간</th>
-					<td>
-									
-										
-											2021-01-11(월) 9:00부터 
-					<br>
-					
-											 2021-10-31(일) 18:00 까지
-										
-										
-									
-									
-										
-										
-										
-											
-										
-									
-								
-					</td>
-					</tr>
-					<tr>
-						<th>지원대상</th>
-						<td>○자격요건:&nbsp;고양시에&nbsp;주소를&nbsp;두고&nbsp;있는&nbsp;만18세~39세&nbsp;청년구직자&nbsp;</td>
-				</tbody>
-			</table>
-			<div>
-				<img src="/file/image.do?filePath=PT0S059OST+BsgQLBnmHPtNgeNOdvWA/nir9D/C22CRqbXOyzoyIa4pM7L75QoKe" alt="포스터" style="width: 100%; height: 400;">
-				<h2>지원내용</h2>
-				<h2>이용방법</h2>
-				<div>○&nbsp;온라인&nbsp;신청접수&nbsp;:&nbsp;일자리지원사업&nbsp;통합접수시스템(https://apply.jobaba.net)</div>
-			</div>
-		</div>
-		기관위치 및 연락처
-		<div>
-			<div>
-				<h1 style="top: -90px;position: relative;" id="detailLocation"></h1>
-				<p>기관위치/연락처</p>
-			</div>
-			<div>
-				<ul>
-					<li>
-						<p>
-						  	<span>기관명</span>
-					  			@@시 통합일자리센터
-											
-						</p>
-					</li>
-					<li>
-						<p>
-							<span>주소</span>
-								경기 @@시 @@구 @@로 12-34 @@고용복지플러스 센터 1층
-						</p>
-						<a href="javascript:void(0);" onclick="onPath('고양시통합일자리센터', '경기 고양시 일산동구 고봉로 32-16');">
-												<p>지도보기</p>
-											</a>	
-					</li>
-					<li>
-						<p>
-							<span>전화번호</span>
-							
-													
-														031-1234-5678
-													
-											
-						</p>
-					</li>
-					<li>
-						<p>
-							<span>이메일</span>
-						</p>
-					</li>				
-				</ul>
-			</div>
-		</div>
-	</div>
-</div> -->
 </body>
 </html>

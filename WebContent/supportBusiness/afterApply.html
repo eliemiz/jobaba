@@ -3,31 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="/jobaba/supportBusiness/css_sb/style.css">
+<link rel="stylesheet" href="/jobaba/supportBusiness/css_sb/supportCss.css">
 </head>
 <body>
 <form>
 	<section>
-		<div>
-			<table>
-				<tbody>
-					<tr><td><input type="text" value="" placeholder="검색하실 제목과 내용에 포함된 단어를 입력하세요." id="latterSchStr" onkeypress=""></td></tr>
-				</tbody>
-			</table>
-		</div>
-		<div>
-			<button type="button"><span>검색</span></button>
-		</div>
-		<div>
-			<table>
-				<colgroup><col width="7%"><col width="*"><col width="12%"></colgroup>
-				<thead>
-					<tr><th>No</th><th>제목</th><th>등록일</th></tr>
-				</thead>
-				<tbody>
-					<tr><td colspan="4" align="center">"등록된 후기가 없습니다"</td></tr>
-				</tbody>
-			</table>
+		<div class="tabContent">
+			<div class="row search">
+				<div class="w86p">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td><input type="text" class="form-control" value placeholder="검색하실 제목과 내용에 포함된 단어를 입력하세요."></td>
+							</tr>
+						<tbody>
+					</table>
+				</div>
+				<div class="w14p btnWrap">
+					<button type="button" class=btn icon_search"><span>검색</span></button>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="table_border">
+					<table class="table">
+						<colgroup><col width="7%"><col width="*"><col width="12%"></colgroup>
+						<thead>
+							<tr><th>No</th><th>제목</th><th>등록일</th></tr>
+						</thead>
+						<tbody id="listTable">
+							<tr><td colspan="4" align="center">"등록된 후기가 없습니다"</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="padding hasBtn">
+				</div>
+			</div>
 		</div>
 	</section>
 </form>
