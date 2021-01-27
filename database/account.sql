@@ -10,6 +10,7 @@ CREATE TABLE account (
 	gender char(3),
 	address varchar2(200)
 );
+
 -- 비밀번호 재설정
 UPDATE account SET pass = 'lion' WHERE id='scott';
 UPDATE account SET pass = 'heart' WHERE id='tiger';
@@ -46,6 +47,13 @@ SELECT id FROM account WHERE name='성춘향' AND phone = '010-2345-6789';
 SELECT id FROM account WHERE name='이몽룡' AND phone = '010-3456-7890';
 SELECT id FROM account WHERE name='김하나' AND phone = '010-4567-8901';
 SELECT id FROM account WHERE name='최희라' AND phone = '010-5678-9012';
+
+-- 아이디 찾기 결과
+SELECT id, name, phone FROM account WHERE name='홍길동' AND phone = '010-1234-5678';
+SELECT id, name, phone FROM account WHERE name='성춘향' AND phone = '010-2345-6789';
+SELECT id, name, phone FROM account WHERE name='이몽룡' AND phone = '010-3456-7890';
+SELECT id, name, phone FROM account WHERE name='김하나' AND phone = '010-4567-8901';
+SELECT id, name, phone FROM account WHERE name='최희라' AND phone = '010-5678-9012';
 
 INSERT INTO account VALUES (5, 'abcd', '1234', '최희라', '010-5678-9012', 'choi@naver.com',
 	to_date('2019-07-25','YYYY-MM-DD'), '여', '전라북도 남원시 요천로 1447 광한루');
