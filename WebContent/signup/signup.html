@@ -18,7 +18,7 @@
 	<div class="step_title">
 	<h3>약관동의(STEP1)</h3>
 	</div>
-	<form name="agree_step">
+	<form name="agree_step" id="agree_step">
 	<fieldset>
 	<div>
 	<ul class="agree-accordion">
@@ -29,9 +29,11 @@
 	<!-- --------------------------------- -->
 	<li class="clear">
 	<label for="usestpltionAgreYn" class="fL"><span class="c-red t-ita"> [필수]</span> 이용약관 동의 </label>
-	<a class="fR "><span>약관보기</span></a>
-	<div class="hide_contents" style="display: none;">
+	
+	<span class="fR " id=show1 onclick="is_show1(1)">약관보기</span> <!-- 1즉, true전달 -->
+	<div class="hide_contents" id=hide1 style="display: none;">
 								             <div class="text">
+								             <br><br><br><br><br><br><br>
 														<h2 class="title">1장 총칙</h2>
 														<h3 class="title">제 1조 (목적)</h3>
 														<p>본 약관은 경기도일자리재단(이하 “재단”)이 운영하는 일자리플랫폼 "잡아바(http://www.jobaba.net)" 사이트 및 통합회원의 서비스를 이용함에 있어 "재단"과 회원간의 이용 조건 및 제반 절차, 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
@@ -343,10 +345,11 @@
 	
 	<li class="clear">
 	<label for="indifClctionAgreYn" class="fL" ><span class="c-red t-ita" > [필수]</span> 개인정보 수집 및 이용 동의</label>
-	<a class="fR"><span>약관보기</span></a>
-	<div class="hide_contents" style="display: none;">
+	<span class="fR" id=show2 onclick="is_show2(1)">약관보기</span> <!-- 1 즉, true전달 -->
+	<div class="hide_contents" id=hide2 style="display: none;">
 
 												<div class="text">
+												<br><br><br><br><br><br><br>
 													<p>
 														경기도일자리재단은 개인정보보호법 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
 													</p>
@@ -525,7 +528,7 @@
 						</div>
 <!-- -------------------------------------------- -->
 <br><br><br><br>
-							<div style="text-align:center;"><label><input type="checkbox" value="2" name="all_ck" onclick='check_all(this);'>모두 동의</label></div>
+							<div style="text-align:center;"><label><input type="checkbox" value="2"  name="all_ck" onclick='check_all(this);'>모두 동의</label></div>
 						
                                 <div style="text-align:right;">
 								<a href="/jobaba/signup/signup2.html"> 다음단계</a>
@@ -537,17 +540,51 @@
 	
 	<script type="text/javascript">
 
-	function check_all(){
+	/*function check_all(){
 		// obj.checked
-		console.log()
+		
 		document.querySelector("[name=usestpltionAgreYn]").checked=true;
 		document.querySelector("[name=indifClctionAgreYn]").checked=true;
 		document.querySelector("[name=infrmAgreYn1]").checked=true;
+		
+	}*/
+	function check_all(){
+		if(document.querySelector("[name=all_ck]").checked==true){
+			document.querySelector("[name=usestpltionAgreYn]").checked=true;
+			document.querySelector("[name=indifClctionAgreYn]").checked=true;
+			document.querySelector("[name=infrmAgreYn1]").checked=true;
+		}else{
+			document.querySelector("[name=usestpltionAgreYn]").checked=false;
+			document.querySelector("[name=indifClctionAgreYn]").checked=false;
+			document.querySelector("[name=infrmAgreYn1]").checked=false;
+		}
 	}
 	
-	
+	var is_Show1=false;
+	function is_show1(is_True){
+		if(is_Show1){
+			document.getElementById("hide1").style.display="none";
+			is_Show1=false;
+			document.getElementById("show1").innerHTML="약관보기";
+		}else{
+			document.getElementById("hide1").style.display="block";
+			is_Show1=true;	
+			document.getElementById("show1").innerHTML="약관닫기";
+		}
+	}
 
-
+	var is_Show2=false;
+	function is_show2(is_True){
+		if(is_Show2){
+			document.getElementById("hide2").style.display="none";
+			is_Show2=false;
+			document.getElementById("show2").innerHTML="약관보기";
+		}else{
+			document.getElementById("hide2").style.display="block";
+			is_Show2=true;	
+			document.getElementById("show2").innerHTML="약관닫기";
+		}
+	}
 
 
 </script>
