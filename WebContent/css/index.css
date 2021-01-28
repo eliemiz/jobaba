@@ -360,7 +360,8 @@ footer {
 
 .privacy {
 	padding: 20px;
-	margin-top: 40px;
+	margin: 40px auto;
+	width: 1260px;
 }
 
 .privacy_title {
@@ -441,5 +442,9 @@ footer {
 	.foot_copy {
 		width: 100%;
 		padding: 20px;
+	}
+	
+	.privacy {
+		width: 100%;
 	}
 }
