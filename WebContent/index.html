@@ -173,8 +173,10 @@
 	}
 	
 	function autoResize(obj){
-		var iframeHeight = obj.contentWindow.document.body.scrollHeight;
-		obj.height = iframeHeight; 
+		
+		obj.contentWindow.document.body.height = "inherit";
+		var height = obj.contentWindow.document.body.scrollHeight;
+		obj.height = height + "px";
 	}
 </script>
 </html>
